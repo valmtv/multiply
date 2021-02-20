@@ -1,0 +1,62 @@
+{
+  "name": "omtv-template-react",
+  "version": "0.0.1",
+  "description": "react project template",
+  "author": "Oleh Matviiv",
+  "license": "ISC",
+  "main": "index.html",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "dev": "webpack-dev-server --mode development",
+    "test": "jest",
+    "lint": "eslint ./src",
+    "jest": "jest --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-flow": "^7.12.1",
+    "@babel/preset-react": "^7.12.10",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.5.1",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^1.0.1",
+    "css-loader": "^2.1.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.1",
+    "eslint": "^7.18.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-webpack-plugin": "^2.4.3",
+    "favicons-webpack-plugin": "^4.2.0",
+    "flow-bin": "^0.108.0",
+    "flow-webpack-plugin": "^1.2.0",
+    "html-webpack-plugin": "^4.5.1",
+    "jest": "^25.5.4",
+    "jest-styled-components": "^6.3.4",
+    "normalize.css": "^8.0.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-test-renderer": "^16.14.0",
+    "style-loader": "^0.23.1",
+    "styled-components": "^4.4.1",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omatviiv/my-component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/omatviiv/my-component.git/issues"
+  },
+  "homepage": "https://github.com/omatviiv/my-component.git"
+}

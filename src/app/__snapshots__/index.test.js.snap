@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots renders correclty 1`] = `
+<div>
+  An empty react app
+  <br />
+  webpack + babel
+  <Component1 />
+</div>
+`;
