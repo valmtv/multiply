@@ -1,13 +1,17 @@
 // @flow
 import React from 'react';
 
-import Component1 from '../component1';
+const App = () => {
+  const number1 = Math.floor(Math.random() * 10);
+  const number2 = Math.floor(Math.random() * 10);
+  // const GiveAnswer = () => {
+    // parseInt(prompt("Write your anwer"));
+  // }
 
-const App = () => <div>
-  An empty react app
-  <br />
-  webpack + babel
-  <Component1 />
-</div>;
+  return <div>
+    {number1} x {number2}
+    { /*<button>{GiveAnswer}</button> */ }
+  </div>;
+};
 
 export default App;
