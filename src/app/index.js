@@ -3,20 +3,23 @@ import React, { useState } from 'react';
 
 const App = () => {
   const [value, setValue] = useState(0);
-
-  const number1 = Math.floor(Math.random() * 10);
-  const number2 = Math.floor(Math.random() * 10);
+  const [num1, setNum1] = useState(Math.floor(Math.random() * 10));
+  const [num2, setNum2] = useState(Math.floor(Math.random() * 10));
+  const [correct, setCorrect] = useState(false);
 
   const handleInput = e => setValue(e.currentTarget.value);
 
   const checkAnswer = () => {
-    console.log('checking', value);
+    const Answer = num1 * num2;
+    if (parseInt(value) === Answer) { setCorrect(true); }
+    else { setCorrect(false); }
   };
 
   return <div>
-    {number1} x {number2}
+    {num1} x {num2}
     <input onChange={handleInput} type="number" />
     <button onClick={checkAnswer}>Check</button>
+    {correct ? 'correct' : 'incorrect'}
   </div>;
 };
 
