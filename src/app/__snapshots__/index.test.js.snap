@@ -2,9 +2,18 @@
 
 exports[`snapshots renders correclty 1`] = `
 <div>
-  An empty react app
-  <br />
-  webpack + babel
-  <Component1 />
+  2
+   x 
+  5
+  <input
+    onChange={[Function]}
+    type="number"
+    value=""
+  />
+  <button
+    onClick={[Function]}
+  >
+    Check
+  </button>
 </div>
 `;
