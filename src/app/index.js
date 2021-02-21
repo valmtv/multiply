@@ -2,16 +2,16 @@
 import React, { useState } from 'react';
 
 const App = () => {
-  const [value, setValue] = useState(0);
+  const [answer, setAnswer] = useState(0);
   const [num1, setNum1] = useState(Math.floor(Math.random() * 10));
   const [num2, setNum2] = useState(Math.floor(Math.random() * 10));
   const [correct, setCorrect] = useState(false);
 
-  const handleInput = e => setValue(e.currentTarget.value);
+  const handleInput = e => setAnswer(e.currentTarget.value);
 
   const checkAnswer = () => {
     const Answer = num1 * num2;
-    if (parseInt(value) === Answer) { setCorrect(true); }
+    if (parseInt(answer) === Answer) { setCorrect(true); }
     else { setCorrect(false); }
   };
 
