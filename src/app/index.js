@@ -2,14 +2,18 @@
 import React, { useState } from 'react';
 
 const App = () => {
-  const [answer, setAnswer] = useState(0);
+  const [answer, setAnswer] = useState('');
   const [num1, setNum1] = useState(Math.floor(Math.random() * 10));
   const [num2, setNum2] = useState(Math.floor(Math.random() * 10));
   const [correct, setCorrect] = useState(false);
+<<<<<<< HEAD
   const [answers, setAnswers] = useState([
     // { num1: 12, num2: 45, answer: 34, correct: false },
   ]);
   const [correctAmount, setCorrectAmount] = useState(0);
+=======
+  const [answers, setAnswers] = useState([]);
+>>>>>>> 2ea09495d090f3471c3a4572cff2f3bea86acddc
 
   const handleInput = e => setAnswer(e.currentTarget.value);
 
@@ -27,7 +31,7 @@ const App = () => {
     ])
     
     // generate new problem
-    setAnswer(0);
+    setAnswer('');
     setNum1(Math.floor(Math.random() * 10));
     setNum2(Math.floor(Math.random() * 10));
     setCorrect(false);
