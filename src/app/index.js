@@ -6,14 +6,7 @@ const App = () => {
   const [num1, setNum1] = useState(Math.floor(Math.random() * 10));
   const [num2, setNum2] = useState(Math.floor(Math.random() * 10));
   const [correct, setCorrect] = useState(false);
-<<<<<<< HEAD
-  const [answers, setAnswers] = useState([
-    // { num1: 12, num2: 45, answer: 34, correct: false },
-  ]);
-  const [correctAmount, setCorrectAmount] = useState(0);
-=======
   const [answers, setAnswers] = useState([]);
->>>>>>> 2ea09495d090f3471c3a4572cff2f3bea86acddc
 
   const handleInput = e => setAnswer(e.currentTarget.value);
 
