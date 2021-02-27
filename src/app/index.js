@@ -9,6 +9,7 @@ const App = () => {
   const [answers, setAnswers] = useState([
     // { num1: 12, num2: 45, answer: 34, correct: false },
   ]);
+  const [correctAmount, setCorrectAmount] = useState(0);
 
   const handleInput = e => setAnswer(e.currentTarget.value);
 
@@ -16,7 +17,7 @@ const App = () => {
 
     // chck current answer
     const isCorrect = parseInt(answer) === num1 * num2;
-    if (isCorrect) { setCorrect(true); }
+    if (isCorrect) { setCorrect(true); setCorrectAmount(correctAmount + 1); }
     else { setCorrect(false); }
 
     // add current answer to the answers array
@@ -33,6 +34,8 @@ const App = () => {
   };
 
   return <div>
+    You complited correct {correctAmount}  of  {answers.length}
+    <br/>
     {num1} x {num2}
     <input onChange={handleInput} type="number" value={answer} />
     <button onClick={checkAnswer}>Check</button>
