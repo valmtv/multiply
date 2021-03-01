@@ -28,7 +28,14 @@ const App = () => {
       n2: d1 < d2 ? d1 : d2,
     });
   };
-  useEffect(() => { genDiffNums(); }, []);
+  useEffect(() => {
+    genDiffNums();
+    const ops = sessionStorage.getItem('ops');
+    ops && setAnswers(JSON.parse(ops));
+  }, []);
+  useEffect(() => {
+    sessionStorage.setItem('ops', JSON.stringify(answers));
+  }, [answers]);
 
   const handleInput = e => setAnswer(e.currentTarget.value);
   const checkAnswer = () => {
