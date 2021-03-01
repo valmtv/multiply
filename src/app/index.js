@@ -8,19 +8,29 @@ const App = () => {
   const [correct, setCorrect] = useState(false);
   const [answers, setAnswers] = useState([]);
 
+  const [sumAnswer, setSumAnswer] = useState('');
+  const [addNums, setAddNums] = useState({
+    n1: Math.floor(Math.random() * 100),
+    n2: Math.floor(Math.random() * 100),
+  });
+
   const handleInput = e => setAnswer(e.currentTarget.value);
-
   const checkAnswer = () => {
-
-    // chck current answer
+    // check current answer
     const isCorrect = parseInt(answer) === num1 * num2;
-    if (isCorrect) { setCorrect(true); setCorrectAmount(correctAmount + 1); }
+    if (isCorrect) { setCorrect(true); }
     else { setCorrect(false); }
 
     // add current answer to the answers array
     setAnswers([
       ...answers,
-      { num1: num1, num2: num2, answer: answer, correct: isCorrect },
+      {
+        num1: num1,
+        num2: num2,
+        answer: answer,
+        correct: isCorrect,
+        operation: '*',
+      },
     ])
     
     // generate new problem
@@ -30,15 +40,55 @@ const App = () => {
     setCorrect(false);
   };
 
-  return <div>
-    You complited correct {correctAmount}  of  {answers.length}
+  const handleSumInput = e => setSumAnswer(e.currentTarget.value);
+  const checkSummAnswer = () => {
+    // check current answer
+    const isCorrect = parseInt(answer) === addNums.n1 + addNums.n2;
+    if (isCorrect) { setCorrect(true); }
+    else { setCorrect(false); }
+
+    // add current answer to the answers array
+    setAnswers([
+      ...answers,
+      {
+        num1: addNums.n1,
+        num2: addNums.n2,
+        answer: sumAnswer,
+        correct: isCorrect,
+        operation: '+',
+      },
+    ])
+    
+    // generate new problem
+    setAnswer('');
+    setAddNums({
+      n1: Math.floor(Math.random() * 100),
+      n2: Math.floor(Math.random() * 100),
+    })
+    setCorrect(false);
+  };
+
+  return <div style={{ padding: '20px' }}>
+    {
+      answers.reduce((total, curr) => curr.correct ? total + 1 : 0, 0)
+    } correct out of {answers.length}
     <br/>
-    {num1} x {num2}
+    <br/>
+    {num1} x {num2} =
     <input onChange={handleInput} type="number" value={answer} />
     <button onClick={checkAnswer}>Check</button>
+    <br/>
+    <br/>
+    {addNums.n1} + {addNums.n2} =
+    <input onChange={handleSumInput} type="number" value={sumAnswer} />
+    <button onClick={checkSummAnswer}>Check</button>
+    <br/>
+    <br/>
     {answers.map((answr, idx) => (
       <div key={idx}>
-        {answr.num1}x{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
+        {answr.num1}{
+          answr.operation
+        }{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
       </div>
     ))}
   </div>;
