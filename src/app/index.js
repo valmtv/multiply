@@ -136,17 +136,17 @@ const App = () => {
     <br/>
     {num1} x {num2} =
     <input onChange={handleInput} type="number" value={answer} />
-    <button onClick={checkAnswer}>Check</button>
+    <button onClick={checkAnswer} disabled={!answer}>Check</button>
     <br/>
     <br/>
     {addNums.n1} + {addNums.n2} =
     <input onChange={handleSumInput} type="number" value={sumAnswer} />
-    <button onClick={checkSummAnswer}>Check</button>
+    <button onClick={checkSummAnswer} disabled={!sumAnswer}>Check</button>
     <br/>
     <br/>
     {diffNums.n1} - {diffNums.n2} =
     <input onChange={handleDiffInput} type="number" value={diffAnswer} />
-    <button onClick={checkDiffAnswer}>Check</button>
+    <button onClick={checkDiffAnswer} disabled={!diffAnswer}>Check</button>
     <br/>
     <br/>
     {answers.map((answr, idx) => (
