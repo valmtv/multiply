@@ -7,6 +7,7 @@ const App = () => {
   const [num2, setNum2] = useState(Math.floor(Math.random() * 10));
   const [correct, setCorrect] = useState(false);
   const [answers, setAnswers] = useState([]);
+  const [correctAmount, setCorrectAmount] = useState(0);
 
   const handleInput = e => setAnswer(e.currentTarget.value);
 
@@ -33,7 +34,7 @@ const App = () => {
   return <div>
     You complited correct {correctAmount}  of  {answers.length}
     <br/>
-    {num1} x {num2}
+     Multi : {num1} x {num2}
     <input onChange={handleInput} type="number" value={answer} />
     <button onClick={checkAnswer}>Check</button>
     {answers.map((answr, idx) => (
