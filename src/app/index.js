@@ -21,8 +21,6 @@ const App = () => {
   const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
   const handleMinusInput = e => setMinusAnswer(e.currentTarget.value);
 
-//  const whatBigger = () = => {};
-
   const checkMultiAnswer = () => {
 
     // chck current answer
@@ -59,6 +57,7 @@ const App = () => {
     setNum4(Math.floor(Math.random() * 1000));
     setCorrect(false);
   };
+  
 
   const checkMinusAnswer = () => {
 
@@ -76,6 +75,18 @@ const App = () => {
     setNum6(Math.floor(Math.random() * 1000));
     setCorrect(false);
   };
+  const setRightPlace = () => { 
+    if (num5 < num6) {
+      const lessNum = num5;
+      const biggerNum = num6;
+      setNum5(biggerNum);
+      setNum6(lessNum);
+    } 
+    else if (num5 === num6) {
+      setNum5(Math.floor(Math.random() * 1000));
+      setNum6(Math.floor(Math.random() * 1000));
+    }
+  };
 
   return <div>
     You complited correct {correctAmount}  of  {multiAnswers.length + plusAnswers.length + minusAnswers.length}
@@ -84,13 +95,14 @@ const App = () => {
     <input onChange={handleMultiInput} type="number" value={multiAnswer} />
     <button onClick={checkMultiAnswer}>Check</button>
     <br/>
-    Plus : {num3} + {num4}
+     Plus : {num3} + {num4}
     <input onChange={handlePlusInput} type="number" value={plusAnswer} />
     <button onClick={checkPlusAnswer}>Check</button>
     <br/>
-     Minus : {num5} - {num6}
+    Minus : {num5} - {num6}
     <input onChange={handleMinusInput} type="number" value={minusAnswer} />
     <button onClick={checkMinusAnswer}>Check</button>
+    <button onClick={setRightPlace}>Change</button>
 
     {multiAnswers.map((answr, idx) => (
       <div key={idx}>
