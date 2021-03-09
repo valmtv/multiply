@@ -15,7 +15,9 @@ const App = () => {
   const [multiAnswers, setMultiAnswers] = useState([]);
   const [plusAnswers, setPlusAnswers] = useState([]);
   const [minusAnswers, setMinusAnswers] = useState([]);
-  const [correctAmount, setCorrectAmount] = useState(0);
+  const [correctMultiAmount, setCorrectMultiAmount] = useState(0);
+  const [correctPlusAmount, setCorrectPlusAmount] = useState(0);
+  const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
 
   const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
   const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
@@ -25,7 +27,7 @@ const App = () => {
 
     // chck current answer
     const isCorrect = parseInt(multiAnswer) === num1 * num2;
-    if (isCorrect) { setCorrect(true); setCorrectAmount(correctAmount + 1); }
+    if (isCorrect) { setCorrect(true); setCorrectMultiAmount(correctMultiAmount + 1); }
     else { setCorrect(false); }
 
     // add current answer to the answers array
@@ -44,7 +46,7 @@ const App = () => {
   const checkPlusAnswer = () => {
 
     const isCorrect = parseInt(plusAnswer) === num3 + num4;
-    if (isCorrect) { setCorrect(true); setCorrectAmount(correctAmount + 1); }
+    if (isCorrect) { setCorrect(true); setCorrectPlusAmount(correctPlusAmount + 1); }
     else { setCorrect(false); }
 
     setPlusAnswers([
@@ -62,7 +64,7 @@ const App = () => {
   const checkMinusAnswer = () => {
 
     const isCorrect = parseInt(minusAnswer) === num5 - num6;
-    if (isCorrect) { setCorrect(true); setCorrectAmount(correctAmount + 1); }
+    if (isCorrect) { setCorrect(true); setCorrectMinusAmount(correctMinusAmount + 1); }
     else { setCorrect(false); }
 
     setMinusAnswers([
@@ -89,31 +91,42 @@ const App = () => {
   };
 
   return <div>
-    You complited correct {correctAmount}  of  {multiAnswers.length + plusAnswers.length + minusAnswers.length}
+    <br/>You complited correct {correctMultiAmount + correctPlusAmount + correctMinusAmount}  of  {multiAnswers.length + plusAnswers.length + minusAnswers.length}
+    <br/> <br/>
+    Your current correct answers of multi exersises {correctMultiAmount} of {multiAnswers.length}
     <br/>
-     Multi : {num1} x {num2}
+    Multi : {num1} x {num2}
     <input onChange={handleMultiInput} type="number" value={multiAnswer} />
     <button onClick={checkMultiAnswer}>Check</button>
     <br/>
-     Plus : {num3} + {num4}
+    Your current correct answers of plus exersises {correctPlusAmount} of {plusAnswers.length}
+    <br/>
+    Plus : {num3} + {num4}
     <input onChange={handlePlusInput} type="number" value={plusAnswer} />
     <button onClick={checkPlusAnswer}>Check</button>
+    <br/>
+    Your current correct answers of minus exersises {correctMinusAmount} of {minusAnswers.length} 
     <br/>
     Minus : {num5} - {num6}
     <input onChange={handleMinusInput} type="number" value={minusAnswer} />
     <button onClick={checkMinusAnswer}>Check</button>
     <button onClick={setRightPlace}>Change</button>
-
+    <br/>
+    _________________________________________________________
     {multiAnswers.map((answr, idx) => (
       <div key={idx}>
         {answr.num1}x{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
       </div>
     ))}
+    <br/>
+    _________________________________________________________
     {plusAnswers.map((answr, idx) => (
       <div key={idx}>
         {answr.num1}+{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
       </div>
     ))}
+    <br/>
+    _________________________________________________________
     {minusAnswers.map((answr, idx) => (
       <div key={idx}>
         {answr.num1}-{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
