@@ -108,9 +108,8 @@ const App = () => {
     Your current correct answers of minus exersises {correctMinusAmount} of {minusAnswers.length} 
     <br/>
     Minus : {num5} - {num6}
-    <input onChange={handleMinusInput} type="number" value={minusAnswer} />
+    <input onClick={setRightPlace} onChange={handleMinusInput} type="number" value={minusAnswer} />
     <button onClick={checkMinusAnswer}>Check</button>
-    <button onClick={setRightPlace}>Change</button>
     <br/>
     _________________________________________________________
     {multiAnswers.map((answr, idx) => (
