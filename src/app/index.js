@@ -18,10 +18,13 @@ const App = () => {
   const [correctMultiAmount, setCorrectMultiAmount] = useState(0);
   const [correctPlusAmount, setCorrectPlusAmount] = useState(0);
   const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
+//  const [dividerNum, setDividerNum] = useState(Math.floor(Math.random() * 10 + 2));
 
   const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
   const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
   const handleMinusInput = e => setMinusAnswer(e.currentTarget.value);
+
+//  if (dividerNum >= 10) {setDividerNum(Math.floor(Math.random() * 10 + 2))};
 
   const checkMultiAnswer = () => {
 
@@ -77,18 +80,17 @@ const App = () => {
     setNum6(Math.floor(Math.random() * 1000));
     setCorrect(false);
   };
-  const setRightPlace = () => { 
-    if (num5 < num6) {
-      const lessNum = num5;
-      const biggerNum = num6;
-      setNum5(biggerNum);
-      setNum6(lessNum);
-    } 
-    else if (num5 === num6) {
-      setNum5(Math.floor(Math.random() * 1000));
-      setNum6(Math.floor(Math.random() * 1000));
-    }
-  };
+  if (num5 < num6) {
+    const lessNum = num5;
+    const biggerNum = num6;
+    setNum5(biggerNum);
+    setNum6(lessNum);
+  } 
+  else if (num5 === num6) {
+    setNum5(Math.floor(Math.random() * 1000));
+    setNum6(Math.floor(Math.random() * 1000));
+  }
+
 
   return <div>
     <br/>You complited correct {correctMultiAmount + correctPlusAmount + correctMinusAmount}  of  {multiAnswers.length + plusAnswers.length + minusAnswers.length}
@@ -108,7 +110,7 @@ const App = () => {
     Your current correct answers of minus exersises {correctMinusAmount} of {minusAnswers.length} 
     <br/>
     Minus : {num5} - {num6}
-    <input onClick={setRightPlace} onChange={handleMinusInput} type="number" value={minusAnswer} />
+    <input onChange={handleMinusInput} type="number" value={minusAnswer} />
     <button onClick={checkMinusAnswer}>Check</button>
     <br/>
     _________________________________________________________
