@@ -2,12 +2,19 @@
 import React, { useState } from 'react';
 
 const App = () => {
+  const RandomNum = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor((Math.random() * (max - min + 1)) + min); 
+  };
+
+
   const [multiAnswer, setMultiAnswer] = useState('');
   const [plusAnswer, setPlusAnswer] = useState('');
   const [minusAnswer, setMinusAnswer] = useState('');
   const [divideAnswer, setDivideAnswer] = useState('');
-  const [num1, setNum1] = useState(Math.floor(Math.random() * 10));
-  const [num2, setNum2] = useState(Math.floor(Math.random() * 10));
+  const [num1, setNum1] = useState(RandomNum(2, 10));
+  const [num2, setNum2] = useState(RandomNum(2, 10));
   const [num3, setNum3] = useState(Math.floor(Math.random() * 1000));
   const [num4, setNum4] = useState(Math.floor(Math.random() * 1000));
   const [num5, setNum5] = useState(Math.floor(Math.random() * 1000));
@@ -24,9 +31,9 @@ const App = () => {
   const [correctDivideAnswer, setCorrectDivideAnswer] = useState(Math.floor(Math.random() * 10 + 2));
   const [dividerNum, setDividerNum] = useState(Math.floor(Math.random() * 10 + 2));
 
-//  const RandomNum = (min, max) => {
-//      Math.random(min, max);
-//  };
+
+//  console.log(num1);
+//  console.log(num2);
 
   if (dividerNum >= 10) {setDividerNum(Math.floor(Math.random() * 10 + 2))};
   if (correctDivideAnswer >= 10) {setCorrectDivideAnswer(Math.floor(Math.random() * 10 + 2))};
