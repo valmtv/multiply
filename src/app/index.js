@@ -24,6 +24,10 @@ const App = () => {
   const [correctDivideAnswer, setCorrectDivideAnswer] = useState(Math.floor(Math.random() * 10 + 2));
   const [dividerNum, setDividerNum] = useState(Math.floor(Math.random() * 10 + 2));
 
+//  const RandomNum = (min, max) => {
+//      Math.random(min, max);
+//  };
+
   if (dividerNum >= 10) {setDividerNum(Math.floor(Math.random() * 10 + 2))};
   if (correctDivideAnswer >= 10) {setCorrectDivideAnswer(Math.floor(Math.random() * 10 + 2))};
 
@@ -114,7 +118,7 @@ const App = () => {
   };
 
   return <div>
-    <br/>You complited correct {correctMultiAmount + correctPlusAmount + correctMinusAmount}  of  {multiAnswers.length + plusAnswers.length + minusAnswers.length}
+    <br/>You complited correct {correctMultiAmount + correctPlusAmount + correctMinusAmount + correctDivideAmount}  of  {multiAnswers.length + plusAnswers.length + minusAnswers.length + divideAnswers.length}
     <br/> <br/>
     Your current correct answers of multi exersises {correctMultiAmount} of {multiAnswers.length}
     <br/>
