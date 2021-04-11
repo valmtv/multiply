@@ -1,20 +1,14 @@
 // @flow
 import React, { useState } from 'react';
+import { randomNum } from './service';
 
 const App = () => {
-  const RandomNum = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor((Math.random() * (max - min + 1)) + min); 
-  };
-
-
   const [multiAnswer, setMultiAnswer] = useState('');
   const [plusAnswer, setPlusAnswer] = useState('');
   const [minusAnswer, setMinusAnswer] = useState('');
   const [divideAnswer, setDivideAnswer] = useState('');
-  const [num1, setNum1] = useState(RandomNum(2, 10));
-  const [num2, setNum2] = useState(RandomNum(2, 10));
+  const [num1, setNum1] = useState(randomNum(2, 10));
+  const [num2, setNum2] = useState(randomNum(2, 10));
   const [num3, setNum3] = useState(Math.floor(Math.random() * 1000));
   const [num4, setNum4] = useState(Math.floor(Math.random() * 1000));
   const [num5, setNum5] = useState(Math.floor(Math.random() * 1000));
