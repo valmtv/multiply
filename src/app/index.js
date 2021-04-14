@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 
 const App = () => {
   const RandomNum = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor((Math.random() * (max - min + 1)) + min); 
+    return Math.floor(Math.random() * (max - min + 1)) + min; 
   };
 
 
@@ -13,8 +11,8 @@ const App = () => {
   const [plusAnswer, setPlusAnswer] = useState('');
   const [minusAnswer, setMinusAnswer] = useState('');
   const [divideAnswer, setDivideAnswer] = useState('');
-  const [num1, setNum1] = useState(RandomNum(2, 10));
-  const [num2, setNum2] = useState(RandomNum(2, 10));
+  const [num1, setNum1] = useState(RandomNum(1, 10));
+  const [num2, setNum2] = useState(RandomNum(1, 10));
   const [num3, setNum3] = useState(Math.floor(Math.random() * 1000));
   const [num4, setNum4] = useState(Math.floor(Math.random() * 1000));
   const [num5, setNum5] = useState(Math.floor(Math.random() * 1000));
@@ -133,11 +131,25 @@ const App = () => {
     <input onChange={handleMultiInput} type="number" value={multiAnswer} />
     <button onClick={checkMultiAnswer}>Check</button>
     <br/>
-    Your current correct answers of plus exersises {correctPlusAmount} of {plusAnswers.length}
+    {multiAnswers.map((answr, idx) => (
+      <div key={idx}>
+      {answr.num1}x{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
+      </div>
+    ))}
+
     <br/>
+    Your current correct answers of plus exersises {correctPlusAmount} of {plusAnswers.length}
+    <br/> 
     Plus : {num3} + {num4}
     <input onChange={handlePlusInput} type="number" value={plusAnswer} />
     <button onClick={checkPlusAnswer}>Check</button>
+    <br/>
+    {plusAnswers.map((answr, idx) => (
+      <div key={idx}>
+        {answr.num1}+{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
+      </div>
+    ))}
+
     <br/>
     Your current correct answers of minus exersises {correctMinusAmount} of {minusAnswers.length} 
     <br/>
@@ -145,39 +157,32 @@ const App = () => {
     <input onChange={handleMinusInput} type="number" value={minusAnswer} />
     <button onClick={checkMinusAnswer}>Check</button>
     <br/> 
+    {minusAnswers.map((answr, idx) => (
+      <div key={idx}>
+        {answr.num1}-{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
+      </div>
+    ))}
+
+    <br/>
     Your current correct answers of divide exersises {correctDivideAmount} of {divideAnswers.length} 
     <br/>
     Divide : {correctDivideAnswer * dividerNum} : {dividerNum}
     <input onChange={handleDivideInput} type="number" value={divideAnswer} />
     <button onClick={checkDivideAnswer}>Check</button>
     <br/>
-    _________________________________________________________
-    {multiAnswers.map((answr, idx) => (
-      <div key={idx}>
-        {answr.num1}x{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
-      </div>
-    ))}
-    <br/>
-    _________________________________________________________
-    {plusAnswers.map((answr, idx) => (
-      <div key={idx}>
-        {answr.num1}+{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
-      </div>
-    ))}
-    <br/>
-    _________________________________________________________
-    {minusAnswers.map((answr, idx) => (
-      <div key={idx}>
-        {answr.num1}-{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
-      </div>
-    ))}
-    <br/>
-    _________________________________________________________
     {divideAnswers.map((answr, idx) => (
       <div key={idx}>
         {answr.dividend}:{answr.divider}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
       </div>
     ))}
+    _________________________________________________________
+
+    _________________________________________________________
+
+    _________________________________________________________
+
+    _________________________________________________________
+
 
   </div>;
 };
