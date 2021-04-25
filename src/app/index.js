@@ -1,11 +1,11 @@
 // @flow
 import React, { useState } from 'react';
+import { randomNumber } from './service';
 
 const App = () => {
   const randomNum = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min; 
   };
-
 
   const [multiAnswer, setMultiAnswer] = useState('');
   const [plusAnswer, setPlusAnswer] = useState('');
@@ -28,8 +28,6 @@ const App = () => {
   const [correctDivideAmount, setCorrectDivideAmount] = useState(0);
   const [correctDivideAnswer, setCorrectDivideAnswer] = useState(randomNum(3, 10));
   const [dividerNum, setDividerNum] = useState(randomNum(3, 10));
-
-
 
   const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
   const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
@@ -170,14 +168,6 @@ const App = () => {
         {answr.dividend}:{answr.divider}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
       </div>
     ))}
-    _________________________________________________________
-
-    _________________________________________________________
-
-    _________________________________________________________
-
-    _________________________________________________________
-
 
   </div>;
 };
