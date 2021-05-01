@@ -1,22 +1,20 @@
 // @flow
 import React, { useState } from 'react';
-import { randomNumber } from './service';
+import { randomNumber } from '../Functions/index.js';
 
 const App = () => {
-  const randomNum = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min; 
-  };
+
 
   const [multiAnswer, setMultiAnswer] = useState('');
   const [plusAnswer, setPlusAnswer] = useState('');
   const [minusAnswer, setMinusAnswer] = useState('');
   const [divideAnswer, setDivideAnswer] = useState('');
-  const [num1, setNum1] = useState(randomNum(1, 10));
-  const [num2, setNum2] = useState(randomNum(1, 10));
-  const [num3, setNum3] = useState(randomNum(10, 1000));
-  const [num4, setNum4] = useState(randomNum(10, 1000));
-  const [num5, setNum5] = useState(randomNum(10, 1000));
-  const [num6, setNum6] = useState(randomNum(10, 1000));
+  const [num1, setNum1] = useState(randomNumber(1, 10));
+  const [num2, setNum2] = useState(randomNumber(1, 10));
+  const [num3, setNum3] = useState(randomNumber(10, 1000));
+  const [num4, setNum4] = useState(randomNumber(10, 1000));
+  const [num5, setNum5] = useState(randomNumber(10, 1000));
+  const [num6, setNum6] = useState(randomNumber(10, 1000));
   const [correct, setCorrect] = useState(false);
   const [multiAnswers, setMultiAnswers] = useState([]);
   const [plusAnswers, setPlusAnswers] = useState([]);
@@ -26,8 +24,8 @@ const App = () => {
   const [correctPlusAmount, setCorrectPlusAmount] = useState(0);
   const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
   const [correctDivideAmount, setCorrectDivideAmount] = useState(0);
-  const [correctDivideAnswer, setCorrectDivideAnswer] = useState(randomNum(3, 10));
-  const [dividerNum, setDividerNum] = useState(randomNum(3, 10));
+  const [correctDivideAnswer, setCorrectDivideAnswer] = useState(randomNumber(3, 10));
+  const [dividerNum, setDividerNum] = useState(randomNumber(3, 10));
 
   const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
   const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
