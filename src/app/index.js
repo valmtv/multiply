@@ -1,21 +1,21 @@
 // @flow
 import React, { useState } from 'react';
-import { randomNumber } from '../Functions/index.js';
+import { randomNumber,  } from '../Functions/index.js';
 
 const App = () => {
 
 
   const [multiAnswer, setMultiAnswer] = useState('');
-  const [plusAnswer, setPlusAnswer] = useState('');
   const [minusAnswer, setMinusAnswer] = useState('');
   const [divideAnswer, setDivideAnswer] = useState('');
+  const [plusAnswer, setPlusAnswer] = useState('');
   const [num1, setNum1] = useState(randomNumber(1, 10));
   const [num2, setNum2] = useState(randomNumber(1, 10));
   const [num3, setNum3] = useState(randomNumber(10, 1000));
   const [num4, setNum4] = useState(randomNumber(10, 1000));
   const [num5, setNum5] = useState(randomNumber(10, 1000));
   const [num6, setNum6] = useState(randomNumber(10, 1000));
-  const [correct, setCorrect] = useState(false);
+
   const [multiAnswers, setMultiAnswers] = useState([]);
   const [plusAnswers, setPlusAnswers] = useState([]);
   const [minusAnswers, setMinusAnswers] = useState([]);
@@ -31,6 +31,7 @@ const App = () => {
   const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
   const handleMinusInput = e => setMinusAnswer(e.currentTarget.value);
   const handleDivideInput = e => setDivideAnswer(e.currentTarget.value);
+  const [correct, setCorrect] = useState(false);
 
   const checkMultiAnswer = () => {
 
@@ -94,7 +95,6 @@ const App = () => {
   } 
   else if (num5 === num6) {
     setNum5(Math.floor(Math.random() * 1000));
-    setNum6(Math.floor(Math.random() * 1000));
   }
 
   const checkDivideAnswer = () => {
