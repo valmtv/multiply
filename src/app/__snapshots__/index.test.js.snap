@@ -16,9 +16,9 @@ exports[`snapshots renders correclty 1`] = `
   0
   <br />
   Multi : 
-  5
+  7
    x 
-  2
+  10
   <input
     onChange={[Function]}
     type="number"
@@ -37,9 +37,9 @@ exports[`snapshots renders correclty 1`] = `
   0
   <br />
   Plus : 
-  435
+  606
    + 
-  165
+  457
   <input
     onChange={[Function]}
     type="number"
@@ -58,9 +58,9 @@ exports[`snapshots renders correclty 1`] = `
   0
   <br />
   Minus : 
-  694
+  708
    - 
-  86
+  252
   <input
     onChange={[Function]}
     type="number"
@@ -79,9 +79,9 @@ exports[`snapshots renders correclty 1`] = `
   0
   <br />
   Divide : 
-  28
+  56
    : 
-  4
+  8
   <input
     onChange={[Function]}
     type="number"
