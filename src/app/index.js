@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { randomNumber } from './service';
 import Multi from '../multi';
+import Sum from '../sum';
 
 const App = () => {
   const [multiAnswers, setMultiAnswers] = useState([]);
@@ -16,36 +17,20 @@ const App = () => {
 
   const [minusAnswer, setMinusAnswer] = useState('');
   const [divideAnswer, setDivideAnswer] = useState('');
-  const [plusAnswer, setPlusAnswer] = useState('');
 
-  const [num3, setNum3] = useState(randomNumber(10, 1000));
-  const [num4, setNum4] = useState(randomNumber(10, 1000));
+
+
   const [num5, setNum5] = useState(randomNumber(10, 1000));
   const [num6, setNum6] = useState(randomNumber(10, 1000));
 
   const [correctDivideAnswer, setCorrectDivideAnswer] = useState(randomNumber(3, 10));
   const [dividerNum, setDividerNum] = useState(randomNumber(3, 10));
 
-  const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
+
   const handleMinusInput = e => setMinusAnswer(e.currentTarget.value);
   const handleDivideInput = e => setDivideAnswer(e.currentTarget.value);
   const [correct, setCorrect] = useState(false);
 
-  const checkPlusAnswer = () => {
-    const isCorrect = parseInt(plusAnswer) === num3 + num4;
-    if (isCorrect) { setCorrect(true); setCorrectPlusAmount(correctPlusAmount + 1); }
-    else { setCorrect(false); }
-
-    setPlusAnswers([
-      ...plusAnswers,
-      { num1: num3, num2: num4, answer: plusAnswer, correct: isCorrect },
-    ])
-    
-    setPlusAnswer('');
-    setNum3(Math.floor(Math.random() * 1000));
-    setNum4(Math.floor(Math.random() * 1000));
-    setCorrect(false);
-  };
 
   const checkMinusAnswer = () => {
     const isCorrect = parseInt(minusAnswer) === num5 - num6;
@@ -99,18 +84,12 @@ const App = () => {
       setCorrectAmount={setCorrectMultiAmount}
     />
 
-    <br/>
-    Your current correct answers of plus exersises {correctPlusAmount} of {plusAnswers.length}
-    <br/> 
-    Plus : {num3} + {num4}
-    <input onChange={handlePlusInput} type="number" value={plusAnswer} />
-    <button onClick={checkPlusAnswer}>Check</button>
-    <br/>
-    {plusAnswers.map((answr, idx) => (
-      <div key={idx}>
-        {answr.num1}+{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
-      </div>
-    ))}
+    <Sum
+      answers={plusAnswers}
+      setAnswers={setPlusAnswers}
+      correctAmount={correctPlusAmount}
+      setCorrectAmount={setCorrectPlusAmount}
+    />
 
     <br/>
     Your current correct answers of minus exersises {correctMinusAmount} of {minusAnswers.length} 
