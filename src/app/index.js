@@ -1,10 +1,9 @@
 // @flow
 import React, { useState } from 'react';
-import { randomNumber,  } from '../Functions/index.js';
+import { randomNumber } from './service';
+// import { checkMultiAnswer } from '../Components';
 
 const App = () => {
-
-
   const [multiAnswer, setMultiAnswer] = useState('');
   const [minusAnswer, setMinusAnswer] = useState('');
   const [divideAnswer, setDivideAnswer] = useState('');
@@ -34,7 +33,6 @@ const App = () => {
   const [correct, setCorrect] = useState(false);
 
   const checkMultiAnswer = () => {
-
     // chck current answer
     const isCorrect = parseInt(multiAnswer) === num1 * num2;
     if (isCorrect) { setCorrect(true); setCorrectMultiAmount(correctMultiAmount + 1); }
@@ -54,7 +52,6 @@ const App = () => {
   };
 
   const checkPlusAnswer = () => {
-
     const isCorrect = parseInt(plusAnswer) === num3 + num4;
     if (isCorrect) { setCorrect(true); setCorrectPlusAmount(correctPlusAmount + 1); }
     else { setCorrect(false); }
@@ -69,10 +66,8 @@ const App = () => {
     setNum4(Math.floor(Math.random() * 1000));
     setCorrect(false);
   };
-  
 
   const checkMinusAnswer = () => {
-
     const isCorrect = parseInt(minusAnswer) === num5 - num6;
     if (isCorrect) { setCorrect(true); setCorrectMinusAmount(correctMinusAmount + 1); }
     else { setCorrect(false); }

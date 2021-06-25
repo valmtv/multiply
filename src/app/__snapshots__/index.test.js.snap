@@ -2,9 +2,23 @@
 
 exports[`snapshots renders correclty 1`] = `
 <div>
-  2
-   x 
+  <br />
+  You complited correct 
+  0
+    of  
+  0
+  <br />
+   
+  <br />
+  Your current correct answers of multi exersises 
+  0
+   of 
+  0
+  <br />
+  Multi : 
   5
+   x 
+  2
   <input
     onChange={[Function]}
     type="number"
@@ -15,5 +29,69 @@ exports[`snapshots renders correclty 1`] = `
   >
     Check
   </button>
+  <br />
+  <br />
+  Your current correct answers of plus exersises 
+  0
+   of 
+  0
+  <br />
+  Plus : 
+  435
+   + 
+  165
+  <input
+    onChange={[Function]}
+    type="number"
+    value=""
+  />
+  <button
+    onClick={[Function]}
+  >
+    Check
+  </button>
+  <br />
+  <br />
+  Your current correct answers of minus exersises 
+  0
+   of 
+  0
+  <br />
+  Minus : 
+  694
+   - 
+  86
+  <input
+    onChange={[Function]}
+    type="number"
+    value=""
+  />
+  <button
+    onClick={[Function]}
+  >
+    Check
+  </button>
+  <br />
+  <br />
+  Your current correct answers of divide exersises 
+  0
+   of 
+  0
+  <br />
+  Divide : 
+  28
+   : 
+  4
+  <input
+    onChange={[Function]}
+    type="number"
+    value=""
+  />
+  <button
+    onClick={[Function]}
+  >
+    Check
+  </button>
+  <br />
 </div>
 `;
