@@ -10,26 +10,12 @@ exports[`snapshots renders correclty 1`] = `
   <br />
    
   <br />
-  Your current correct answers of multi exersises 
-  0
-   of 
-  0
-  <br />
-  Multi : 
-  7
-   x 
-  10
-  <input
-    onChange={[Function]}
-    type="number"
-    value=""
+  <Multi
+    answers={Array []}
+    correctAmount={0}
+    setAnswers={[Function]}
+    setCorrectAmount={[Function]}
   />
-  <button
-    onClick={[Function]}
-  >
-    Check
-  </button>
-  <br />
   <br />
   Your current correct answers of plus exersises 
   0
@@ -37,9 +23,9 @@ exports[`snapshots renders correclty 1`] = `
   0
   <br />
   Plus : 
-  606
+  541
    + 
-  457
+  644
   <input
     onChange={[Function]}
     type="number"
@@ -58,9 +44,9 @@ exports[`snapshots renders correclty 1`] = `
   0
   <br />
   Minus : 
-  708
+  378
    - 
-  252
+  21
   <input
     onChange={[Function]}
     type="number"
@@ -79,9 +65,9 @@ exports[`snapshots renders correclty 1`] = `
   0
   <br />
   Divide : 
-  56
+  80
    : 
-  8
+  10
   <input
     onChange={[Function]}
     type="number"

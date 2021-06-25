@@ -1,55 +1,35 @@
 // @flow
 import React, { useState } from 'react';
 import { randomNumber } from './service';
-// import { checkMultiAnswer } from '../Components';
+import Multi from '../multi';
 
 const App = () => {
-  const [multiAnswer, setMultiAnswer] = useState('');
+  const [multiAnswers, setMultiAnswers] = useState([]);
+  const [plusAnswers, setPlusAnswers] = useState([]);
+  const [minusAnswers, setMinusAnswers] = useState([]);
+  const [divideAnswers, setDivideAnswers] = useState([]);
+
+  const [correctMultiAmount, setCorrectMultiAmount] = useState(0);
+  const [correctPlusAmount, setCorrectPlusAmount] = useState(0);
+  const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
+  const [correctDivideAmount, setCorrectDivideAmount] = useState(0);
+
   const [minusAnswer, setMinusAnswer] = useState('');
   const [divideAnswer, setDivideAnswer] = useState('');
   const [plusAnswer, setPlusAnswer] = useState('');
-  const [num1, setNum1] = useState(randomNumber(1, 10));
-  const [num2, setNum2] = useState(randomNumber(1, 10));
+
   const [num3, setNum3] = useState(randomNumber(10, 1000));
   const [num4, setNum4] = useState(randomNumber(10, 1000));
   const [num5, setNum5] = useState(randomNumber(10, 1000));
   const [num6, setNum6] = useState(randomNumber(10, 1000));
 
-  const [multiAnswers, setMultiAnswers] = useState([]);
-  const [plusAnswers, setPlusAnswers] = useState([]);
-  const [minusAnswers, setMinusAnswers] = useState([]);
-  const [divideAnswers, setDivideAnswers] = useState([]);
-  const [correctMultiAmount, setCorrectMultiAmount] = useState(0);
-  const [correctPlusAmount, setCorrectPlusAmount] = useState(0);
-  const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
-  const [correctDivideAmount, setCorrectDivideAmount] = useState(0);
   const [correctDivideAnswer, setCorrectDivideAnswer] = useState(randomNumber(3, 10));
   const [dividerNum, setDividerNum] = useState(randomNumber(3, 10));
 
-  const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
   const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
   const handleMinusInput = e => setMinusAnswer(e.currentTarget.value);
   const handleDivideInput = e => setDivideAnswer(e.currentTarget.value);
   const [correct, setCorrect] = useState(false);
-
-  const checkMultiAnswer = () => {
-    // chck current answer
-    const isCorrect = parseInt(multiAnswer) === num1 * num2;
-    if (isCorrect) { setCorrect(true); setCorrectMultiAmount(correctMultiAmount + 1); }
-    else { setCorrect(false); }
-
-    // add current answer to the answers array
-    setMultiAnswers([
-      ...multiAnswers,
-      { num1: num1, num2: num2, answer: multiAnswer, correct: isCorrect },
-    ])
-    
-    // generate new problem
-    setMultiAnswer('');
-    setNum1(Math.floor(Math.random() * 10));
-    setNum2(Math.floor(Math.random() * 10));
-    setCorrect(false);
-  };
 
   const checkPlusAnswer = () => {
     const isCorrect = parseInt(plusAnswer) === num3 + num4;
@@ -111,17 +91,13 @@ const App = () => {
   return <div>
     <br/>You complited correct {correctMultiAmount + correctPlusAmount + correctMinusAmount + correctDivideAmount}  of  {multiAnswers.length + plusAnswers.length + minusAnswers.length + divideAnswers.length}
     <br/> <br/>
-    Your current correct answers of multi exersises {correctMultiAmount} of {multiAnswers.length}
-    <br/>
-    Multi : {num1} x {num2}
-    <input onChange={handleMultiInput} type="number" value={multiAnswer} />
-    <button onClick={checkMultiAnswer}>Check</button>
-    <br/>
-    {multiAnswers.map((answr, idx) => (
-      <div key={idx}>
-      {answr.num1}x{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
-      </div>
-    ))}
+
+    <Multi
+      answers={multiAnswers}
+      setAnswers={setMultiAnswers}
+      correctAmount={correctMultiAmount}
+      setCorrectAmount={setCorrectMultiAmount}
+    />
 
     <br/>
     Your current correct answers of plus exersises {correctPlusAmount} of {plusAnswers.length}
