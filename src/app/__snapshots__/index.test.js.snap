@@ -5,7 +5,7 @@ exports[`snapshots renders correclty 1`] = `
   <br />
   You complited correct 
   0
-    of  
+   of 
   0
   <br />
    
@@ -16,48 +16,18 @@ exports[`snapshots renders correclty 1`] = `
     setAnswers={[Function]}
     setCorrectAmount={[Function]}
   />
-  <br />
-  Your current correct answers of plus exersises 
-  0
-   of 
-  0
-  <br />
-  Plus : 
-  541
-   + 
-  644
-  <input
-    onChange={[Function]}
-    type="number"
-    value=""
+  <Sum
+    answers={Array []}
+    correctAmount={0}
+    setAnswers={[Function]}
+    setCorrectAmount={[Function]}
   />
-  <button
-    onClick={[Function]}
-  >
-    Check
-  </button>
-  <br />
-  <br />
-  Your current correct answers of minus exersises 
-  0
-   of 
-  0
-  <br />
-  Minus : 
-  378
-   - 
-  21
-  <input
-    onChange={[Function]}
-    type="number"
-    value=""
+  <Subtract
+    answers={Array []}
+    correctAmount={0}
+    setAnswers={[Function]}
+    setCorrectAmount={[Function]}
   />
-  <button
-    onClick={[Function]}
-  >
-    Check
-  </button>
-  <br />
   <br />
   Your current correct answers of divide exersises 
   0
@@ -65,9 +35,9 @@ exports[`snapshots renders correclty 1`] = `
   0
   <br />
   Divide : 
-  80
+  81
    : 
-  10
+  9
   <input
     onChange={[Function]}
     type="number"

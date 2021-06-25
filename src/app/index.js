@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { randomNumber } from './service';
 import Multi from '../multi';
 import Sum from '../sum';
+import Subtract from '../subtract';
 
 const App = () => {
   const [multiAnswers, setMultiAnswers] = useState([]);
@@ -15,47 +16,23 @@ const App = () => {
   const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
   const [correctDivideAmount, setCorrectDivideAmount] = useState(0);
 
-  const [minusAnswer, setMinusAnswer] = useState('');
+
   const [divideAnswer, setDivideAnswer] = useState('');
 
 
 
-  const [num5, setNum5] = useState(randomNumber(10, 1000));
-  const [num6, setNum6] = useState(randomNumber(10, 1000));
+
 
   const [correctDivideAnswer, setCorrectDivideAnswer] = useState(randomNumber(3, 10));
   const [dividerNum, setDividerNum] = useState(randomNumber(3, 10));
 
 
-  const handleMinusInput = e => setMinusAnswer(e.currentTarget.value);
+
   const handleDivideInput = e => setDivideAnswer(e.currentTarget.value);
   const [correct, setCorrect] = useState(false);
 
 
-  const checkMinusAnswer = () => {
-    const isCorrect = parseInt(minusAnswer) === num5 - num6;
-    if (isCorrect) { setCorrect(true); setCorrectMinusAmount(correctMinusAmount + 1); }
-    else { setCorrect(false); }
 
-    setMinusAnswers([
-      ...minusAnswers,
-      { num1: num5, num2: num6, answer: minusAnswer, correct: isCorrect },
-    ]);
-    
-    setMinusAnswer('');
-    setNum5(Math.floor(Math.random() * 1000));
-    setNum6(Math.floor(Math.random() * 1000));
-    setCorrect(false);
-  };
-  if (num5 < num6) {
-    const lessNum = num5;
-    const biggerNum = num6;
-    setNum5(biggerNum);
-    setNum6(lessNum);
-  } 
-  else if (num5 === num6) {
-    setNum5(Math.floor(Math.random() * 1000));
-  }
 
   const checkDivideAnswer = () => {
     const isCorrect = parseInt(divideAnswer) === correctDivideAnswer;
@@ -74,7 +51,12 @@ const App = () => {
   };
 
   return <div>
-    <br/>You complited correct {correctMultiAmount + correctPlusAmount + correctMinusAmount + correctDivideAmount}  of  {multiAnswers.length + plusAnswers.length + minusAnswers.length + divideAnswers.length}
+    <br/>You complited correct {
+      correctMultiAmount + correctPlusAmount + correctMinusAmount + correctDivideAmount
+    } of {
+      multiAnswers.length + plusAnswers.length + minusAnswers.length + divideAnswers.length
+    }
+
     <br/> <br/>
 
     <Multi
@@ -90,19 +72,14 @@ const App = () => {
       correctAmount={correctPlusAmount}
       setCorrectAmount={setCorrectPlusAmount}
     />
+    
+    <Subtract
+      answers={minusAnswers}
+      setAnswers={setMinusAnswers}
+      correctAmount={correctMinusAmount}
+      setCorrectAmount={setCorrectMinusAmount}
+    />
 
-    <br/>
-    Your current correct answers of minus exersises {correctMinusAmount} of {minusAnswers.length} 
-    <br/>
-    Minus : {num5} - {num6}
-    <input onChange={handleMinusInput} type="number" value={minusAnswer} />
-    <button onClick={checkMinusAnswer}>Check</button>
-    <br/> 
-    {minusAnswers.map((answr, idx) => (
-      <div key={idx}>
-        {answr.num1}-{answr.num2}={answr.answer} ({answr.correct ? 'correct' : 'incorrect'})
-      </div>
-    ))}
 
     <br/>
     Your current correct answers of divide exersises {correctDivideAmount} of {divideAnswers.length} 
