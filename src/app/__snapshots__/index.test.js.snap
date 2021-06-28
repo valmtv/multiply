@@ -28,26 +28,11 @@ exports[`snapshots renders correclty 1`] = `
     setAnswers={[Function]}
     setCorrectAmount={[Function]}
   />
-  <br />
-  Your current correct answers of divide exersises 
-  0
-   of 
-  0
-  <br />
-  Divide : 
-  81
-   : 
-  9
-  <input
-    onChange={[Function]}
-    type="number"
-    value=""
+  <Divide
+    answers={Array []}
+    correctAmount={0}
+    setAnswers={[Function]}
+    setCorrectAmount={[Function]}
   />
-  <button
-    onClick={[Function]}
-  >
-    Check
-  </button>
-  <br />
 </div>
 `;

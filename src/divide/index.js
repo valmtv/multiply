@@ -1,0 +1,61 @@
+import React, { useState } from 'react'; 
+import { randomNumber } from '../app/service';
+
+const Divide = ({
+  answers, setAnswers,
+  correctAmount, setCorrectAmount
+}) => {
+  const [divideAnswer, setDivideAnswer] = useState('');
+  const [correctDivideAnswer, setCorrectDivideAnswer] = useState(randomNumber(3, 10));
+  const [dividerNum, setDividerNum] = useState(randomNumber(3, 10));
+  const [correct, setCorrect] = useState(false);
+  const handleDivideInput = e => setDivideAnswer(e.currentTarget.value);
+
+  const checkDivideAnswer = () => {
+    const isCorrect = parseInt(divideAnswer) === correctDivideAnswer;
+    if (isCorrect) { 
+      setCorrect(true);
+      setCorrectAmount(correctAmount + 1) 
+    }
+    else { setCorrect(false); }
+  
+    setAnswers([
+      ...answers,
+      {
+        dividend: correctDivideAnswer * dividerNum,
+        divider: dividerNum,
+        answer: divideAnswer,
+        correct: isCorrect
+      }
+    ]);
+
+    setDivideAnswer('');
+    setCorrectDivideAnswer(Math.floor(Math.random() * 10 + 2));
+    setDividerNum(Math.floor(Math.random() * 10 + 2));
+    setCorrect(false);
+  };
+
+  return <> 
+    <br/>
+    Your current correct answers of divide exersises {
+    correctAmount} of {answers.length} 
+    <br/>
+    Divide : {correctDivideAnswer * dividerNum} : {dividerNum}
+    <input 
+      onChange={handleDivideInput}
+      type="number"
+      value={divideAnswer} 
+    />
+    <button onClick={checkDivideAnswer}>Check</button>
+    <br/>
+    {answers.map((answr, idx) => (
+      <div key={idx}>
+        {answr.dividend}:{answr.divider}={answr.answer} ({
+          answr.correct ? 'correct' : 'incorrect'
+        })
+      </div>
+    ))}
+  </>;
+};
+
+export default Divide;
