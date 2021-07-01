@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { randomNumber } from '../app/service';
 
 const Multi = ({
@@ -9,10 +9,16 @@ const Multi = ({
   // and he will be confused by too many changes at once
   correctAmount, setCorrectAmount,
 }) => {
+  const [internalAnswers, setInternalAnswers] = useState(answers);
+  useEffect(() => {
+    setInternalAnswers(answers);
+  }, [answers]);
+
   const [multiAnswer, setMultiAnswer] = useState('');
   const [num1, setNum1] = useState(randomNumber(1, 10));
   const [num2, setNum2] = useState(randomNumber(1, 10));
   const [correct, setCorrect] = useState(false);
+//  const [CA, setCA] = useState(0);
 
   const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
 
@@ -22,22 +28,30 @@ const Multi = ({
 
     if (isCorrect) {
       setCorrect(true);
-      setCorrectAmount(correctAmount + 1);
     }
     else {
       setCorrect(false);
     }
 
-    // add current answer to the answers array
-    setAnswers([
-      ...answers,
+    // add current answer to the internalAnswers array
+    const res = [
+      ...internalAnswers,
       {
         num1: num1,
         num2: num2,
         answer: multiAnswer,
         correct: isCorrect,
       },
-    ])
+    ];
+    setAnswers(res);
+
+    const myFunc = (total, answer) => {  
+      if (answer.correct) { return total + 1; }
+      else { return total; }
+    };
+    setCorrectAmount(res.reduce(myFunc, 0));
+
+    console.log(correctAmount, res);
     
     // generate new problem
     setMultiAnswer('');
@@ -48,7 +62,7 @@ const Multi = ({
 
   return <>
     Your current correct answers of multi exersises
-    {correctAmount} of {answers.length}
+    {correctAmount}  of {internalAnswers.length}
     <br/>
     Multi : {num1} x {num2}
     <input
@@ -58,7 +72,7 @@ const Multi = ({
     />
     <button onClick={checkMultiAnswer}>Check</button>
     <br/>
-    {answers.map((answr, idx) => (
+    {internalAnswers.map((answr, idx) => (
       <div key={idx}>
         {answr.num1}x{answr.num2}={answr.answer} ({
           answr.correct ? 'correct' : 'incorrect'
