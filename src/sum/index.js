@@ -42,8 +42,6 @@ const Sum = ({
     };
     setCorrectAmount(res.reduce(correctCounter, 0));
 
-    console.log(correctAmount, res);
-
     setPlusAnswer('');
     setNum3(Math.floor(Math.random() * 1000));
     setNum4(Math.floor(Math.random() * 1000));

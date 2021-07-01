@@ -43,8 +43,6 @@ const Subtract = ({
     };
     setCorrectAmount(res.reduce(correctCounter, 0));
 
-    console.log(correctAmount, res);
-
     setMinusAnswer('');
     setNum5(Math.floor(Math.random() * 1000));
     setNum6(Math.floor(Math.random() * 1000));
