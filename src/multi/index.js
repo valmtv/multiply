@@ -18,7 +18,6 @@ const Multi = ({
   const [num1, setNum1] = useState(randomNumber(1, 10));
   const [num2, setNum2] = useState(randomNumber(1, 10));
   const [correct, setCorrect] = useState(false);
-//  const [CA, setCA] = useState(0);
 
   const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
 
@@ -45,14 +44,12 @@ const Multi = ({
     ];
     setAnswers(res);
 
-    const myFunc = (total, answer) => {  
+    const correctCounter = (total, answer) => {  
       if (answer.correct) { return total + 1; }
       else { return total; }
     };
-    setCorrectAmount(res.reduce(myFunc, 0));
-
-    console.log(correctAmount, res);
-    
+    setCorrectAmount(res.reduce(correctCounter, 0));
+ 
     // generate new problem
     setMultiAnswer('');
     setNum1(Math.floor(Math.random() * 10));

@@ -1,10 +1,15 @@
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import { randomNumber } from '../app/service';
 
 const Divide = ({
   answers, setAnswers,
   correctAmount, setCorrectAmount
 }) => {
+  const [internalAnswers, setInternalAnswers] = useState(answers);
+  useEffect(() => {
+    setInternalAnswers(answers);
+  }, [answers]);
+
   const [divideAnswer, setDivideAnswer] = useState('');
   const [correctDivideAnswer, setCorrectDivideAnswer] = useState(randomNumber(3, 10));
   const [dividerNum, setDividerNum] = useState(randomNumber(3, 10));
@@ -19,15 +24,22 @@ const Divide = ({
     }
     else { setCorrect(false); }
   
-    setAnswers([
-      ...answers,
+    const res = [
+      ...internalAnswers,
       {
         dividend: correctDivideAnswer * dividerNum,
         divider: dividerNum,
         answer: divideAnswer,
         correct: isCorrect
       }
-    ]);
+    ];
+    setAnswers(res);
+
+    const correctCounter = (total, answer) => {  
+      if (answer.correct) { return total + 1; }
+      else { return total; }
+    };
+    setCorrectAmount(res.reduce(correctCounter, 0));
 
     setDivideAnswer('');
     setCorrectDivideAnswer(Math.floor(Math.random() * 10 + 2));

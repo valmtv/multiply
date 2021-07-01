@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { randomNumber } from '../app/service';
 
 const Subtract = ({
   answers, setAnswers,
   correctAmount, setCorrectAmount,
 }) => {
+  const [internalAnswers, setInternalAnswers] = useState(answers);
+  useEffect(() => {
+    setInternalAnswers(answers);
+  }, [answers]);
+
   const [minusAnswer, setMinusAnswer] = useState('');
   const [num5, setNum5] = useState(randomNumber(10, 1000));
   const [num6, setNum6] = useState(randomNumber(10, 1000));
@@ -20,16 +25,26 @@ const Subtract = ({
     }
     else { setCorrect(false); }
 
-    setAnswers([
-      ...answers,
+    const res = [
+      ...internalAnswers,
       {
         num1: num5,
         num2: num6,
         answer: minusAnswer,
         correct: isCorrect 
       },
-    ]);
+    ];
+    setAnswers(res);
+
     
+    const correctCounter = (total, answer) => {  
+      if (answer.correct) { return total + 1; }
+      else { return total; }
+    };
+    setCorrectAmount(res.reduce(correctCounter, 0));
+
+    console.log(correctAmount, res);
+
     setMinusAnswer('');
     setNum5(Math.floor(Math.random() * 1000));
     setNum6(Math.floor(Math.random() * 1000));
