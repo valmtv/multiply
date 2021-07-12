@@ -1,15 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshots renders correclty 1`] = `
-<div>
-  <br />
+<styled.main>
   You complited correct 
   0
    of 
   0
-  <br />
-   
-  <br />
   <Multi
     answers={Array []}
     correctAmount={0}
@@ -34,5 +30,5 @@ exports[`snapshots renders correclty 1`] = `
     setAnswers={[Function]}
     setCorrectAmount={[Function]}
   />
-</div>
+</styled.main>
 `;
