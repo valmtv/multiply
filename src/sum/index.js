@@ -43,8 +43,8 @@ const Sum = ({
     setCorrectAmount(res.reduce(correctCounter, 0));
 
     setPlusAnswer('');
-    setNum3(Math.floor(Math.random() * 1000));
-    setNum4(Math.floor(Math.random() * 1000));
+    setNum3(randomNumber(10, 1000));
+    setNum4(randomNumber(10, 1000));
     setCorrect(false);
   };
 

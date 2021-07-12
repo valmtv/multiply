@@ -52,8 +52,8 @@ const Multi = ({
  
     // generate new problem
     setMultiAnswer('');
-    setNum1(Math.floor(Math.random() * 10));
-    setNum2(Math.floor(Math.random() * 10));
+    setNum1(randomNumber(1, 10));
+    setNum2(randomNumber(1, 10));
     setCorrect(false);
   };
 

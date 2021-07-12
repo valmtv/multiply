@@ -44,8 +44,8 @@ const Subtract = ({
     setCorrectAmount(res.reduce(correctCounter, 0));
 
     setMinusAnswer('');
-    setNum5(Math.floor(Math.random() * 1000));
-    setNum6(Math.floor(Math.random() * 1000));
+    setNum5(randomNumber(10, 1000));
+    setNum6(randomNumber(10, 1000));
     setCorrect(false);
   };
 
@@ -56,7 +56,7 @@ const Subtract = ({
     setNum6(lessNum);
   } 
   else if (num5 === num6) {
-    setNum5(Math.floor(Math.random() * 1000));
+    setNum5(randomNumber(10, 1000));
   }
 
   return <> 

@@ -42,8 +42,8 @@ const Divide = ({
     setCorrectAmount(res.reduce(correctCounter, 0));
 
     setDivideAnswer('');
-    setCorrectDivideAnswer(Math.floor(Math.random() * 10 + 2));
-    setDividerNum(Math.floor(Math.random() * 10 + 2));
+    setCorrectDivideAnswer(randomNumber(3, 10));
+    setDividerNum(randomNumber(3, 10));
     setCorrect(false);
   };
 
