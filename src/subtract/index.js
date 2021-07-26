@@ -60,18 +60,19 @@ const Subtract = ({
   }
 
   return <> 
+      Minus : 
       <br/>
-      Your current correct answers of minus exersises
-      {correctAmount} of {answers.length} 
+      Correct__ {correctAmount} / {answers.length} 
       <br/>
-      Minus : {num5} - {num6}
-      <input
-        onChange={handleMinusInput} 
-        type="number"
-        value={minusAnswer}
-      />
-      <button onClick={checkMinusAnswer}>Check</button>
-      <br/> 
+      Example : {num5} - {num6}
+      <div>
+        <input
+          onChange={handleMinusInput} 
+          type="number"
+          value={minusAnswer}
+        />
+        <button onClick={checkMinusAnswer}>Check</button>
+      </div> 
       {answers.map((answr, idx) => (
         <div key={idx}>
           {answr.num1}-{answr.num2}={answr.answer}

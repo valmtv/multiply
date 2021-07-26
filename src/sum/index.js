@@ -49,19 +49,19 @@ const Sum = ({
   };
 
   return <>
-    
+    Plus : 
     <br/>
-    Your current correct answers of plus exersises
-    {correctAmount} of {answers.length}
+    Correct__ {correctAmount} / {answers.length}
     <br/> 
-    Plus : {num3} + {num4}
-    <input 
-      onChange={handlePlusInput}
-      type="number"
-      value={plusAnswer}
-    />
-    <button onClick={checkPlusAnswer}>Check</button>
-    <br/>
+    Example : {num3} + {num4}
+    <div>
+      <input 
+        onChange={handlePlusInput}
+        type="number"
+        value={plusAnswer}
+      />
+      <button onClick={checkPlusAnswer}>Check</button>
+    </div>
     {answers.map((answr, idx) => (
       <div key={idx}>
         {answr.num1}+{answr.num2}={answr.answer} ({

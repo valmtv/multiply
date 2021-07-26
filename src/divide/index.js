@@ -49,18 +49,19 @@ const Divide = ({
   };
 
   return <> 
+    Divide :
     <br/>
-    Your current correct answers of divide exersises {
-    correctAmount} of {answers.length} 
+    Correct__ {correctAmount} / {answers.length} 
     <br/>
-    Divide : {correctDivideAnswer * dividerNum} : {dividerNum}
-    <input 
-      onChange={handleDivideInput}
-      type="number"
-      value={divideAnswer} 
-    />
-    <button onClick={checkDivideAnswer}>Check</button>
-    <br/>
+    Example : {correctDivideAnswer * dividerNum} : {dividerNum}
+    <div>
+      <input 
+        onChange={handleDivideInput}
+        type="number"
+        value={divideAnswer} 
+      />
+      <button onClick={checkDivideAnswer}>Check</button>
+    </div>
     {answers.map((answr, idx) => (
       <div key={idx}>
         {answr.dividend}:{answr.divider}={answr.answer} ({

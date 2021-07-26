@@ -9,12 +9,18 @@ import Sum from '../sum';
 import Subtract from '../subtract';
 import Divide from '../divide';
 
+const Div = styled.div`
+  padding: 10px; 
+  background-color: #e6eaed;
+`;
+
 const Main = styled.main`
+  width: 25%;
   font-size: 17px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5% 25% 20% 25%;
+  padding: 5% 35% 20% 35%;
 `;
 
 const App = () => {
@@ -28,40 +34,45 @@ const App = () => {
   const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
   const [correctDivideAmount, setCorrectDivideAmount] = useState(0);
   return <Main>
-    <div>
-      You complited correct {
-        correctMultiAmount + correctPlusAmount + correctMinusAmount + correctDivideAmount
-      } of {
+    <Div>
+      Total Correct {
+      correctMultiAmount + correctPlusAmount + correctMinusAmount + correctDivideAmount
+      } / {
         multiAnswers.length + plusAnswers.length + minusAnswers.length + divideAnswers.length
       }
-    </div>
+    </Div>
+    <Div>
     <Multi
       answers={multiAnswers}
       setAnswers={setMultiAnswers}
       correctAmount={correctMultiAmount}
       setCorrectAmount={setCorrectMultiAmount}
     />
-
+    </Div>
+    <Div>
     <Sum
       answers={plusAnswers}
       setAnswers={setPlusAnswers}
       correctAmount={correctPlusAmount}
       setCorrectAmount={setCorrectPlusAmount}
     />
-    
+    </Div>
+    <Div>
     <Subtract
       answers={minusAnswers}
       setAnswers={setMinusAnswers}
       correctAmount={correctMinusAmount}
       setCorrectAmount={setCorrectMinusAmount}
     />
-
+    </Div>
+    <Div>
     <Divide
       answers={divideAnswers}
       setAnswers={setDivideAnswers}
       correctAmount={correctDivideAmount}
       setCorrectAmount={setCorrectDivideAmount}
     />
+    </Div>
 
   </Main>;
 };

@@ -58,18 +58,20 @@ const Multi = ({
   };
 
   return <>
-    Your current correct answers of multi exersises
-    {correctAmount}  of {internalAnswers.length}
+    Multi :
     <br/>
-    Multi : {num1} x {num2}
-    <input
-      onChange={handleMultiInput}
-      type="number"
-      value={multiAnswer}
-    />
-    <button onClick={checkMultiAnswer}>Check</button>
+    Correct__ {correctAmount} / {internalAnswers.length}
     <br/>
-    {internalAnswers.map((answr, idx) => (
+    Example : {num1} x {num2}
+    <div>
+      <input
+        onChange={handleMultiInput}
+        type="number"
+        value={multiAnswer}
+      />
+      <button onClick={checkMultiAnswer}>Check</button>
+    </div>
+      {internalAnswers.map((answr, idx) => (
       <div key={idx}>
         {answr.num1}x{answr.num2}={answr.answer} ({
           answr.correct ? 'correct' : 'incorrect'
