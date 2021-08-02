@@ -11,16 +11,15 @@ import Divide from '../divide';
 
 const Div = styled.div`
   padding: 10px; 
-  background-color: #e6eaed;
 `;
 
 const Main = styled.main`
-  width: 25%;
+  background-color: #e6eaed;
   font-size: 17px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5% 35% 20% 35%;
+  padding: 5%; 
 `;
 
 const App = () => {

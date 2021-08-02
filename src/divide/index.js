@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { randomNumber } from '../app/service';
 
+const Input = styled.input`
+  width: 75px;
+`;
+
 const Divide = ({
   answers, setAnswers,
   correctAmount, setCorrectAmount
@@ -55,7 +59,7 @@ const Divide = ({
     <br/>
     Example : {correctDivideAnswer * dividerNum} : {dividerNum}
     <div>
-      <input 
+      <Input 
         onChange={handleDivideInput}
         type="number"
         value={divideAnswer} 

@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import { randomNumber } from '../app/service';
+
+const Input = styled.input`
+  width: 75px;
+`;
 
 const Sum = ({
   answers, setAnswers,
@@ -55,7 +60,7 @@ const Sum = ({
     <br/> 
     Example : {num3} + {num4}
     <div>
-      <input 
+      <Input 
         onChange={handlePlusInput}
         type="number"
         value={plusAnswer}

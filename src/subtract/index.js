@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import { randomNumber } from '../app/service';
+
+const Input = styled.input`
+  width: 75px;
+`;
 
 const Subtract = ({
   answers, setAnswers,
@@ -66,7 +71,7 @@ const Subtract = ({
       <br/>
       Example : {num5} - {num6}
       <div>
-        <input
+        <Input
           onChange={handleMinusInput} 
           type="number"
           value={minusAnswer}

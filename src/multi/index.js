@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import { randomNumber } from '../app/service';
+
+const Input = styled.input`
+  width: 75px;
+`;
 
 const Multi = ({
   answers, setAnswers,
@@ -64,7 +69,7 @@ const Multi = ({
     <br/>
     Example : {num1} x {num2}
     <div>
-      <input
+      <Input
         onChange={handleMultiInput}
         type="number"
         value={multiAnswer}
