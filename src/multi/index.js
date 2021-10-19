@@ -89,12 +89,12 @@ const Multi = ({
     </div>
     <div>
       Multi numbers range is from {minMulti} to {maxMulti}
-        {internalAnswers.map((answr, idx) => (
-        <div key={idx}>
-          {answr.num1}x{answr.num2}={answr.answer} ({
-            answr.correct ? 'correct' : 'incorrect'
-          })
-        </div>
+      {internalAnswers.map((answr, idx) => (
+      <div key={idx}>
+        {answr.num1}x{answr.num2}={answr.answer} ({
+          answr.correct ? 'correct' : 'incorrect'
+        })
+      </div>
       ))}
     </div>
   </Div1>
