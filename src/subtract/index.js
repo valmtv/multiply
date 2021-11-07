@@ -6,6 +6,12 @@ const Input = styled.input`
   width: 75px;
 `;
 
+const Div1 = styled.div`
+  display:  flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 const Subtract = ({
   answers, setAnswers,
   correctAmount, setCorrectAmount,
@@ -15,9 +21,11 @@ const Subtract = ({
     setInternalAnswers(answers);
   }, [answers]);
 
+  const [minMinus] = useState(10);
+  const [maxMinus] = useState(1000);
   const [minusAnswer, setMinusAnswer] = useState('');
-  const [num5, setNum5] = useState(randomNumber(10, 1000));
-  const [num6, setNum6] = useState(randomNumber(10, 1000));
+  const [num5, setNum5] = useState(randomNumber(minMinus, maxMinus));
+  const [num6, setNum6] = useState(randomNumber(minMinus, maxMinus));
   const [correct, setCorrect] = useState(false);
 
   const handleMinusInput = e => setMinusAnswer(e.currentTarget.value);
@@ -49,8 +57,8 @@ const Subtract = ({
     setCorrectAmount(res.reduce(correctCounter, 0));
 
     setMinusAnswer('');
-    setNum5(randomNumber(10, 1000));
-    setNum6(randomNumber(10, 1000));
+    setNum5(randomNumber(minMinus, maxMinus));
+    setNum6(randomNumber(minMinus, maxMinus));
     setCorrect(false);
   };
 
@@ -61,10 +69,11 @@ const Subtract = ({
     setNum6(lessNum);
   } 
   else if (num5 === num6) {
-    setNum5(randomNumber(10, 1000));
+    setNum5(randomNumber(minMinus, maxMinus));
   }
 
-  return <> 
+  return <Div1> 
+    <div>
       Minus : 
       <br/>
       Correct__ {correctAmount} / {answers.length} 
@@ -78,13 +87,18 @@ const Subtract = ({
         />
         <button onClick={checkMinusAnswer}>Check</button>
       </div> 
+    </div>
+    <div>
+      Plus numbers range is from {minMinus} to {maxMinus}
       {answers.map((answr, idx) => (
         <div key={idx}>
-          {answr.num1}-{answr.num2}={answr.answer}
-          ({answr.correct ? 'correct' : 'incorrect'})
+          {answr.num1}-{answr.num2}={answr.answer} ({
+            answr.correct ? 'correct' : 'incorrect'
+          })
         </div>
       ))}
-    </>
+    </div>
+  </Div1>
 };
 
 export default Subtract;

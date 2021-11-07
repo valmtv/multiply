@@ -66,8 +66,8 @@ const Multi = ({
  
     // generate new problem
     setMultiAnswer('');
-    setNum1(randomNumber(1, 10));
-    setNum2(randomNumber(1, 10));
+    setNum1(randomNumber(minMulti, maxMulti));
+    setNum2(randomNumber(minMulti, maxMulti));
     setCorrect(false);
   };
 

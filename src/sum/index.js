@@ -55,8 +55,8 @@ const Sum = ({
     setCorrectAmount(res.reduce(correctCounter, 0));
 
     setPlusAnswer('');
-    setNum3(randomNumber(10, 1000));
-    setNum4(randomNumber(10, 1000));
+    setNum3(randomNumber(minSum, maxSum));
+    setNum4(randomNumber(minSum, maxSum));
     setCorrect(false);
   };
 
@@ -79,11 +79,11 @@ const Sum = ({
     <div>
       Plus numbers range is from {minSum} to {maxSum}
       {answers.map((answr, idx) => (
-      <div key={idx}>
-        {answr.num1}+{answr.num2}={answr.answer} ({
-          answr.correct ? 'correct' : 'incorrect'
-          })
-      </div>
+        <div key={idx}>
+          {answr.num1}+{answr.num2}={answr.answer} ({
+            answr.correct ? 'correct' : 'incorrect'
+            })
+        </div>
       ))}
     </div>
   </Div1>
