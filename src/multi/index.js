@@ -13,19 +13,14 @@ const Div1 = styled.div`
 `;
 
 const Multi = ({
-  answers, setAnswers,
   // TODO: remouse reduuce to calc how maybe correct answers are in
   // the answers array
   // didn't do this because it would be to much for Valera
   // and he will be confused by too many changes at once
-  correctAmount, setCorrectAmount,
 }) => {
-  const [internalAnswers, setInternalAnswers] = useState(answers);
-  useEffect(() => {
-    setInternalAnswers(answers);
-  }, [answers]);
 
-
+  const [multiAnswers, setMultiAnswers] = useState([]);
+  const [correctMultiAmount, setCorrectMultiAmount] = useState(0);
   const [minMulti, setMinMulti] = useState(1);
   const [maxMulti, setMaxMulti] = useState(10);
   const [multiAnswer, setMultiAnswer] = useState('');
@@ -46,9 +41,9 @@ const Multi = ({
       setCorrect(false);
     }
 
-    // add current answer to the internalAnswers array
+    // add current answer to the multiAnswers array
     const res = [
-      ...internalAnswers,
+      ...multiAnswers,
       {
         num1: num1,
         num2: num2,
@@ -56,13 +51,13 @@ const Multi = ({
         correct: isCorrect,
       },
     ];
-    setAnswers(res);
+    setMultiAnswers(res);
 
     const correctCounter = (total, answer) => {  
       if (answer.correct) { return total + 1; }
       else { return total; }
     };
-    setCorrectAmount(res.reduce(correctCounter, 0));
+    setCorrectMultiAmount(res.reduce(correctCounter, 0));
  
     // generate new problem
     setMultiAnswer('');
@@ -75,7 +70,7 @@ const Multi = ({
     <div>
       Multi :
       <br/>
-      Correct__ {correctAmount} / {internalAnswers.length}
+      Correct__ {correctMultiAmount} / {multiAnswers.length}
       <br/>
       Example : {num1} x {num2}
       <div>
@@ -89,7 +84,7 @@ const Multi = ({
     </div>
     <div>
       Multi numbers range is from {minMulti} to {maxMulti}
-      {internalAnswers.map((answr, idx) => (
+      {multiAnswers.map((answr, idx) => (
       <div key={idx}>
         {answr.num1}x{answr.num2}={answr.answer} ({
           answr.correct ? 'correct' : 'incorrect'

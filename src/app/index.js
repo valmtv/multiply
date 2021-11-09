@@ -23,30 +23,18 @@ const Main = styled.main`
 `;
 
 const App = () => {
-  const [multiAnswers, setMultiAnswers] = useState([]);
+
   const [plusAnswers, setPlusAnswers] = useState([]);
   const [minusAnswers, setMinusAnswers] = useState([]);
   const [divideAnswers, setDivideAnswers] = useState([]);
 
-  const [correctMultiAmount, setCorrectMultiAmount] = useState(0);
+
   const [correctPlusAmount, setCorrectPlusAmount] = useState(0);
   const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
   const [correctDivideAmount, setCorrectDivideAmount] = useState(0);
   return <Main>
     <Div>
-      Total Correct {
-      correctMultiAmount + correctPlusAmount + correctMinusAmount + correctDivideAmount
-      } / {
-        multiAnswers.length + plusAnswers.length + minusAnswers.length + divideAnswers.length
-      }
-    </Div>
-    <Div>
-    <Multi
-      answers={multiAnswers}
-      setAnswers={setMultiAnswers}
-      correctAmount={correctMultiAmount}
-      setCorrectAmount={setCorrectMultiAmount}
-    />
+      <Multi/>
     </Div>
     <Div>
     <Sum
