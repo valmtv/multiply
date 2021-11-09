@@ -12,14 +12,9 @@ const Div1 = styled.div`
   justify-content: space-between;
 `;
 
-const Sum = ({
-  answers, setAnswers,
-  correctAmount, setCorrectAmount,
-}) => { 
-  const [internalAnswers, setInternalAnswers] = useState(answers);
-  useEffect(() => {
-    setInternalAnswers(answers);
-  }, [answers]);
+const Sum = ({}) => { 
+  const [plusAnswers, setPlusAnswers] = useState([]);
+  const [correctPlusAmount, setCorrectPlusAmount] = useState(0);
   const [minSum, setMinSum] = useState(10);
   const [maxSum, setMaxSum] = useState(1000);
   const [plusAnswer, setPlusAnswer] = useState('');
@@ -33,12 +28,12 @@ const Sum = ({
     const isCorrect = parseInt(plusAnswer) === num3 + num4;
     if (isCorrect) {
       setCorrect(true);
-      setCorrectAmount(correctAmount + 1);
+      setCorrectPlusAmount(correctPlusAmount + 1);
     }
     else { setCorrect(false); }
 
     const res = [
-      ...internalAnswers,
+      ...plusAnswers,
       {
         num1: num3,
         num2: num4,
@@ -46,13 +41,13 @@ const Sum = ({
         correct: isCorrect
       },
     ];
-    setAnswers(res); 
+    setPlusAnswers(res); 
 
     const correctCounter = (total, answer) => {  
       if (answer.correct) { return total + 1; }
       else { return total; }
     };
-    setCorrectAmount(res.reduce(correctCounter, 0));
+    setCorrectPlusAmount(res.reduce(correctCounter, 0));
 
     setPlusAnswer('');
     setNum3(randomNumber(minSum, maxSum));
@@ -64,7 +59,7 @@ const Sum = ({
     <div>
       Plus : 
       <br/>
-      Correct__ {correctAmount} / {answers.length}
+      Correct__ {correctPlusAmount} / {plusAnswers.length}
       <br/> 
       Example : {num3} + {num4}
       <div>
@@ -78,7 +73,7 @@ const Sum = ({
     </div>
     <div>
       Plus numbers range is from {minSum} to {maxSum}
-      {answers.map((answr, idx) => (
+      {plusAnswers.map((answr, idx) => (
         <div key={idx}>
           {answr.num1}+{answr.num2}={answr.answer} ({
             answr.correct ? 'correct' : 'incorrect'
