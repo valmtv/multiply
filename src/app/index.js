@@ -23,15 +23,6 @@ const Main = styled.main`
 `;
 
 const App = () => {
-
-
-
-  const [divideAnswers, setDivideAnswers] = useState([]);
-
-
-
-
-  const [correctDivideAmount, setCorrectDivideAmount] = useState(0);
   return <Main>
     <Div>
       <Multi />
@@ -43,12 +34,7 @@ const App = () => {
     <Subtract />
     </Div>
     <Div>
-    <Divide
-      answers={divideAnswers}
-      setAnswers={setDivideAnswers}
-      correctAmount={correctDivideAmount}
-      setCorrectAmount={setCorrectDivideAmount}
-    />
+    <Divide />
     </Div>
 
   </Main>;
