@@ -25,12 +25,12 @@ const Main = styled.main`
 const App = () => {
 
 
-  const [minusAnswers, setMinusAnswers] = useState([]);
+
   const [divideAnswers, setDivideAnswers] = useState([]);
 
 
 
-  const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
+
   const [correctDivideAmount, setCorrectDivideAmount] = useState(0);
   return <Main>
     <Div>
@@ -40,12 +40,7 @@ const App = () => {
       <Sum />
     </Div>
     <Div>
-    <Subtract
-      answers={minusAnswers}
-      setAnswers={setMinusAnswers}
-      correctAmount={correctMinusAmount}
-      setCorrectAmount={setCorrectMinusAmount}
-    />
+    <Subtract />
     </Div>
     <Div>
     <Divide

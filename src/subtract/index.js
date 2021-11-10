@@ -12,15 +12,9 @@ const Div1 = styled.div`
   justify-content: space-between;
 `;
 
-const Subtract = ({
-  answers, setAnswers,
-  correctAmount, setCorrectAmount,
-}) => {
-  const [internalAnswers, setInternalAnswers] = useState(answers);
-  useEffect(() => {
-    setInternalAnswers(answers);
-  }, [answers]);
-
+const Subtract = ({}) => {
+  const [minusAnswers, setMinusAnswers] = useState([]);
+  const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
   const [minMinus] = useState(10);
   const [maxMinus] = useState(1000);
   const [minusAnswer, setMinusAnswer] = useState('');
@@ -34,12 +28,12 @@ const Subtract = ({
     const isCorrect = parseInt(minusAnswer) === num5 - num6;
     if (isCorrect) {
       setCorrect(true);
-      setCorrectAmount(correctAmount + 1);
+      setCorrectMinusAmount(correctMinusAmount + 1);
     }
     else { setCorrect(false); }
 
     const res = [
-      ...internalAnswers,
+      ...minusAnswers,
       {
         num1: num5,
         num2: num6,
@@ -47,14 +41,14 @@ const Subtract = ({
         correct: isCorrect 
       },
     ];
-    setAnswers(res);
+    setMinusAnswers(res);
 
     
     const correctCounter = (total, answer) => {  
       if (answer.correct) { return total + 1; }
       else { return total; }
     };
-    setCorrectAmount(res.reduce(correctCounter, 0));
+    setCorrectMinusAmount(res.reduce(correctCounter, 0));
 
     setMinusAnswer('');
     setNum5(randomNumber(minMinus, maxMinus));
@@ -76,7 +70,7 @@ const Subtract = ({
     <div>
       Minus : 
       <br/>
-      Correct__ {correctAmount} / {answers.length} 
+      Correct__ {correctMinusAmount} / {minusAnswers.length} 
       <br/>
       Example : {num5} - {num6}
       <div>
@@ -90,7 +84,7 @@ const Subtract = ({
     </div>
     <div>
       Plus numbers range is from {minMinus} to {maxMinus}
-      {answers.map((answr, idx) => (
+      {minusAnswers.map((answr, idx) => (
         <div key={idx}>
           {answr.num1}-{answr.num2}={answr.answer} ({
             answr.correct ? 'correct' : 'incorrect'
