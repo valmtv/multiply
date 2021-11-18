@@ -1,4 +1,6 @@
+import React, { useState } from 'react';
 import { randomNumber } from '../app/service';
+import styled from 'styled-components';
 
 const Input = styled.input`
   width: 75px;
@@ -31,7 +33,7 @@ const Divide = ({}) => {
     else { setCorrect(false); }
   
     const res = [
-      ...DivideAnswers,
+      ...divideAnswers,
       {
         dividend: correctDivideAnswer * dividerNum,
         divider: dividerNum,
