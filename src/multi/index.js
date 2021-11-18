@@ -12,6 +12,19 @@ const Div1 = styled.div`
   justify-content : space-between;
 `;
 
+const MultiButton = styled.div`
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: green;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  font-size: 30px;
+`;
+
 const Multi = ({
   // TODO: remouse reduuce to calc how maybe correct answers are in
   // the answers array
@@ -27,8 +40,11 @@ const Multi = ({
   const [num1, setNum1] = useState(randomNumber(minMulti, maxMulti));
   const [num2, setNum2] = useState(randomNumber(minMulti, maxMulti));
   const [correct, setCorrect] = useState(false);
+  const [isMulti, setIsMulti] = useState(false);
 
   const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
+ 
+  const isMultiChange = () => setIsMulti(!isMulti);
 
   const checkMultiAnswer = () => {
     // chck current answer
@@ -66,33 +82,41 @@ const Multi = ({
     setCorrect(false);
   };
 
-  return <Div1>
-    <div>
-      Multi :
-      <br/>
-      Correct__ {correctMultiAmount} / {multiAnswers.length}
-      <br/>
-      Example : {num1} x {num2}
-      <div>
-        <Input
-          onChange={handleMultiInput}
-          type="number"
-          value={multiAnswer}
-        />
-        <button onClick={checkMultiAnswer}>Check</button>
-      </div>
-    </div>
-    <div>
-      Multi numbers range is from {minMulti} to {maxMulti}
-      {multiAnswers.map((answr, idx) => (
-      <div key={idx}>
-        {answr.num1}x{answr.num2}={answr.answer} ({
-          answr.correct ? 'correct' : 'incorrect'
-        })
-      </div>
-      ))}
-    </div>
-  </Div1>
+  if (isMulti) {
+    return <>
+      <MultiButton onClick={isMultiChange}>Multi</MultiButton>
+      <Div1>
+        <div>
+          Multi :
+          <br/>
+          Correct__ {correctMultiAmount} / {multiAnswers.length}
+          <br/>
+          Example : {num1} x {num2}
+          <div>
+            <Input
+              onChange={handleMultiInput}
+              type="number"
+              value={multiAnswer}
+            />
+            <button onClick={checkMultiAnswer}>Check</button>
+          </div>
+        </div>
+        <div>
+          Multi numbers range is from {minMulti} to {maxMulti}
+          {multiAnswers.map((answr, idx) => (
+          <div key={idx}>
+            {answr.num1}x{answr.num2}={answr.answer} ({
+              answr.correct ? 'correct' : 'incorrect'
+            })
+          </div>
+          ))}
+        </div>
+      </Div1>
+    </>
+  }
+  else if (isMulti === false)  {
+    return <MultiButton onClick={isMultiChange}>Multi</MultiButton>
+  };
 };
 
 export default Multi;
