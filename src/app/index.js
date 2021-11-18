@@ -31,10 +31,10 @@ const App = () => {
       <Sum />
     </Div>
     <Div>
-    <Subtract />
+      <Subtract />
     </Div>
     <Div>
-    <Divide />
+      <Divide />
     </Div>
 
   </Main>;
