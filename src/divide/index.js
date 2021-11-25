@@ -12,6 +12,19 @@ const Div1 = styled.div`
   justify-content: space-between;
 `;
 
+const DivideButton = styled.div`
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: green;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  font-size: 30px;
+`;
+
 const Divide = ({}) => {
 
   const [divideAnswers, setDivideAnswers] = useState([]);
@@ -22,7 +35,10 @@ const Divide = ({}) => {
   const [correctDivideAnswer, setCorrectDivideAnswer] = useState(randomNumber(minDivide, maxDivide));
   const [dividerNum, setDividerNum] = useState(randomNumber(minDivide, maxDivide));
   const [correct, setCorrect] = useState(false);
+  const [isDivide, setIsDivide] = useState(false);
+
   const handleDivideInput = e => setDivideAnswer(e.currentTarget.value);
+  const onDivideChange = () => setIsDivide(!isDivide);
 
   const checkDivideAnswer = () => {
     const isCorrect = parseInt(divideAnswer) === correctDivideAnswer;
@@ -55,33 +71,39 @@ const Divide = ({}) => {
     setCorrect(false);
   };
 
-  return <Div1> 
-    <div>
-      Divide :
-      <br/>
-      Correct__ {correctDivideAmount} / {divideAnswers.length} 
-      <br/>
-      Example : {correctDivideAnswer * dividerNum} : {dividerNum}
-      <div>
-        <Input 
-          onChange={handleDivideInput}
-          type="number"
-          value={divideAnswer} 
-        />
-        <button onClick={checkDivideAnswer}>Check</button>
-      </div>
-    </div>
-    <div>
-      Divide numbers range is from {minDivide} to {maxDivide}
-      {divideAnswers.map((answr, idx) => (
-        <div key={idx}>
-          {answr.dividend}:{answr.divider}={answr.answer} ({
-            answr.correct ? 'correct' : 'incorrect'
-          })
+  if (isDivide) { 
+    return <>
+      <DivideButton onClick={onDivideChange}>Divide</DivideButton> 
+      <Div1> 
+        <div>
+          Divide :
+          <br/>
+          Correct__ {correctDivideAmount} / {divideAnswers.length} 
+          <br/>
+          Example : {correctDivideAnswer * dividerNum} : {dividerNum}
+          <div>
+            <Input 
+              onChange={handleDivideInput}
+              type="number"
+              value={divideAnswer} 
+            />
+            <button onClick={checkDivideAnswer}>Check</button>
+          </div>
         </div>
-      ))}
-    </div>
-  </Div1>;
+        <div>
+          Divide numbers range is from {minDivide} to {maxDivide}
+          {divideAnswers.map((answr, idx) => (
+            <div key={idx}>
+              {answr.dividend}:{answr.divider}={answr.answer} ({
+                answr.correct ? 'correct' : 'incorrect'
+              })
+            </div>
+          ))}
+        </div>
+      </Div1>
+    </>
+  }
+  else { return <DivideButton onClick={onDivideChange}>Divide</DivideButton> }
 };
 
 export default Divide;
