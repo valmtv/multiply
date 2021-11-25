@@ -25,7 +25,7 @@ const MinusButton = styled.div`
   font-size: 30px;
 `;
 
-const Subtract = ({}) => {
+const Subtract = ({ isMinus, setIsMinus, OnAccordionClick }) => {
   const [minusAnswers, setMinusAnswers] = useState([]);
   const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
   const [minMinus] = useState(10);
@@ -34,10 +34,9 @@ const Subtract = ({}) => {
   const [num5, setNum5] = useState(randomNumber(minMinus, maxMinus));
   const [num6, setNum6] = useState(randomNumber(minMinus, maxMinus));
   const [correct, setCorrect] = useState(false);
-  const [isMinus, setIsMinus] = useState(false);
 
   const handleMinusInput = e => setMinusAnswer(e.currentTarget.value);
-  const onMinusChange = () => setIsMinus(!isMinus);
+  const isMinusChange = () => setIsMinus(!isMinus);
 
   const checkMinusAnswer = () => {
     const isCorrect = parseInt(minusAnswer) === num5 - num6;
@@ -83,7 +82,7 @@ const Subtract = ({}) => {
 
   if (isMinus) {
     return <>
-      <MinusButton onClick={onMinusChange}>Minus</MinusButton> 
+      <MinusButton onClick={OnAccordionClick, isMinusChange}>Minus</MinusButton> 
       <Div1> 
         <div>
           Minus : 
@@ -113,8 +112,8 @@ const Subtract = ({}) => {
       </Div1>
     </>
   }
-  else {  
-    return <MinusButton onClick={onMinusChange}>Minus</MinusButton> 
+  else if (isMinus === false) {  
+    return <MinusButton onClick={OnAccordionClick, isMinusChange}>Minus</MinusButton> 
   };
 };
 

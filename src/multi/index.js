@@ -26,6 +26,7 @@ const MultiButton = styled.div`
 `;
 
 const Multi = ({
+  isMulti, setIsMulti, OnAccordionClick 
   // TODO: remouse reduuce to calc how maybe correct answers are in
   // the answers array
   // didn't do this because it would be to much for Valera
@@ -40,7 +41,6 @@ const Multi = ({
   const [num1, setNum1] = useState(randomNumber(minMulti, maxMulti));
   const [num2, setNum2] = useState(randomNumber(minMulti, maxMulti));
   const [correct, setCorrect] = useState(false);
-  const [isMulti, setIsMulti] = useState(false);
 
   const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
  
@@ -84,7 +84,7 @@ const Multi = ({
 
   if (isMulti) {
     return <>
-      <MultiButton onClick={isMultiChange}>Multi</MultiButton>
+      <MultiButton onClick={OnAccordionClick, isMultiChange}>Multi</MultiButton>
       <Div1>
         <div>
           Multi :
@@ -115,7 +115,7 @@ const Multi = ({
     </>
   }
   else if (isMulti === false)  {
-    return <MultiButton onClick={isMultiChange}>Multi</MultiButton>
+    return <MultiButton onClick={OnAccordionClick, isMultiChange}>Multi</MultiButton>
   };
 };
 

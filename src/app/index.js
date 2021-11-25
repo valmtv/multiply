@@ -23,18 +23,45 @@ const Main = styled.main`
 `;
 
 const App = () => {
+  const [isMulti, setIsMulti] = useState(false);
+  const [isPlus, setIsPlus] = useState(false);
+  const [isMinus, setIsMinus] = useState(false);
+  const [isDivide, setIsDivide] = useState(false);
+  
+  const OnAccordionClick = () => {
+    setIsMulti(false); 
+    setIsPlus(false); 
+    setIsMinus(false); 
+    setIsDivide(false);  
+  };
   return <Main>
     <Div>
-      <Multi />
+      <Multi 
+        isMulti={isMulti}
+        setIsMulti={setIsMulti}
+        OnAccordionClick={OnAccordionClick}
+      />
     </Div>
     <Div>
-      <Sum />
+      <Sum 
+        isPlus={isPlus}
+        setIsPlus={setIsPlus}
+        OnAccordionClick={OnAccordionClick}
+      />
     </Div>
     <Div>
-      <Subtract />
+      <Subtract
+        isMinus={isMinus}
+        setIsMinus={setIsMinus}
+        OnAccordionClick={OnAccordionClick}
+      />
     </Div>
     <Div>
-      <Divide />
+      <Divide
+        isDivide={isDivide}
+        setIsDivide={setIsDivide}
+        OnAccordionClick={OnAccordionClick}
+      />
     </Div>
 
   </Main>;

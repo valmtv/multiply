@@ -25,7 +25,7 @@ const PlusButton = styled.div`
   font-size: 30px;
 `;
 
-const Sum = ({}) => { 
+const Sum = ({ isPlus, setIsPlus, OnAccordionClick }) => { 
   const [plusAnswers, setPlusAnswers] = useState([]);
   const [correctPlusAmount, setCorrectPlusAmount] = useState(0);
   const [minSum, setMinSum] = useState(10);
@@ -34,7 +34,6 @@ const Sum = ({}) => {
   const [num3, setNum3] = useState(randomNumber(minSum, maxSum));
   const [num4, setNum4] = useState(randomNumber(minSum, maxSum));
   const [correct, setCorrect] = useState(false);
-  const [isPlus, setIsPlus] = useState(false);
 
   const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
   const isPlusChange = () => setIsPlus(!isPlus);
@@ -72,7 +71,7 @@ const Sum = ({}) => {
 
   if (isPlus) {
     return <>
-      <PlusButton onClick={isPlusChange}>Plus</PlusButton>
+      <PlusButton onClick={OnAccordionClick, isPlusChange}>Plus</PlusButton>
       <Div1>
         <div>
           Plus : 
@@ -103,7 +102,7 @@ const Sum = ({}) => {
     </>
   }
   else {
-    return <PlusButton onClick={isPlusChange}>Plus</PlusButton>
+    return <PlusButton onClick={OnAccordionClick, isPlusChange}>Plus</PlusButton>
   };
 };
 
