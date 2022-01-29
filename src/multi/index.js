@@ -44,7 +44,10 @@ const Multi = ({
 
   const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
  
-  const isMultiChange = () => setIsMulti(!isMulti);
+  const isMultiChange = () => { 
+    OnAccordionClick();
+    setIsMulti(!isMulti);
+  };
 
   const checkMultiAnswer = () => {
     // chck current answer
@@ -84,7 +87,7 @@ const Multi = ({
 
   if (isMulti) {
     return <>
-      <MultiButton onClick={OnAccordionClick, isMultiChange}>Multi</MultiButton>
+      <MultiButton onClick={isMultiChange}>Multi</MultiButton>
       <Div1>
         <div>
           Multi :
@@ -115,7 +118,7 @@ const Multi = ({
     </>
   }
   else if (isMulti === false)  {
-    return <MultiButton onClick={OnAccordionClick, isMultiChange}>Multi</MultiButton>
+    return <MultiButton onClick={isMultiChange}>Multi</MultiButton>
   };
 };
 

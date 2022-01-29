@@ -36,7 +36,10 @@ const Sum = ({ isPlus, setIsPlus, OnAccordionClick }) => {
   const [correct, setCorrect] = useState(false);
 
   const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
-  const isPlusChange = () => setIsPlus(!isPlus);
+  const isPlusChange = () => {
+    OnAccordionClick();
+    setIsPlus(!isPlus);
+  };
 
   const checkPlusAnswer = () => {
     const isCorrect = parseInt(plusAnswer) === num3 + num4;
@@ -71,7 +74,7 @@ const Sum = ({ isPlus, setIsPlus, OnAccordionClick }) => {
 
   if (isPlus) {
     return <>
-      <PlusButton onClick={OnAccordionClick, isPlusChange}>Plus</PlusButton>
+      <PlusButton onClick={isPlusChange}>Plus</PlusButton>
       <Div1>
         <div>
           Plus : 
@@ -102,7 +105,7 @@ const Sum = ({ isPlus, setIsPlus, OnAccordionClick }) => {
     </>
   }
   else {
-    return <PlusButton onClick={OnAccordionClick, isPlusChange}>Plus</PlusButton>
+    return <PlusButton onClick={isPlusChange}>Plus</PlusButton>
   };
 };
 

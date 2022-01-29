@@ -37,7 +37,10 @@ const Divide = ({ isDivide, setIsDivide, OnAccordionClick }) => {
   const [correct, setCorrect] = useState(false);
 
   const handleDivideInput = e => setDivideAnswer(e.currentTarget.value);
-  const isDivideChange = () => setIsDivide(!isDivide);
+  const isDivideChange = () => { 
+    OnAccordionClick();
+    setIsDivide(!isDivide);
+  };
 
   const checkDivideAnswer = () => {
     const isCorrect = parseInt(divideAnswer) === correctDivideAnswer;
@@ -72,7 +75,7 @@ const Divide = ({ isDivide, setIsDivide, OnAccordionClick }) => {
 
   if (isDivide) { 
     return <>
-      <DivideButton onClick={OnAccordionClick, isDivideChange}>Divide</DivideButton> 
+      <DivideButton onClick={isDivideChange}>Divide</DivideButton> 
       <Div1> 
         <div>
           Divide :
@@ -102,7 +105,7 @@ const Divide = ({ isDivide, setIsDivide, OnAccordionClick }) => {
       </Div1>
     </>
   }
-  else { return <DivideButton onClick={OnAccordionClick, isDivideChange}>Divide</DivideButton> }
+  else { return <DivideButton onClick={isDivideChange}>Divide</DivideButton> }
 };
 
 export default Divide;
