@@ -4,12 +4,14 @@ import { randomNumber } from '../app/service';
 
 const Input = styled.input`
   width: 75px;
+  background-color: transparent;
 `;
 
 const Div1 = styled.div`
   display: flex;
   flex-direction : row;
   justify-content : space-between;
+  font-size: 1.2rem;
 `;
 
 const MultiButton = styled.div`
@@ -33,7 +35,7 @@ const Multi = ({
   // and he will be confused by too many changes at once
 }) => {
 
-  const [multiAnswers, setMultiAnswers] = useState([]);
+  const [multiAnswers , setMultiAnswers] = useState([]);
   const [correctMultiAmount, setCorrectMultiAmount] = useState(0);
   const [minMulti, setMinMulti] = useState(1);
   const [maxMulti, setMaxMulti] = useState(10);
@@ -44,13 +46,14 @@ const Multi = ({
 
   const handleMultiInput = e => setMultiAnswer(e.currentTarget.value);
  
-  const isMultiChange = () => { 
-    OnAccordionClick();
-    setIsMulti(!isMulti);
-  };
+    const isMultiChange = () => { 
+      OnAccordionClick();
+      setIsMulti(!isMulti);
+    }; 
 
   const checkMultiAnswer = () => {
     // chck current answer
+
     const isCorrect = parseInt(multiAnswer) === num1 * num2;
 
     if (isCorrect) {
@@ -59,9 +62,10 @@ const Multi = ({
     else {
       setCorrect(false);
     }
-
     // add current answer to the multiAnswers array
-    const res = [
+
+
+  const res = [
       ...multiAnswers,
       {
         num1: num1,
@@ -70,19 +74,45 @@ const Multi = ({
         correct: isCorrect,
       },
     ];
-    setMultiAnswers(res);
+
+    setMultiAnswers( res );
 
     const correctCounter = (total, answer) => {  
       if (answer.correct) { return total + 1; }
       else { return total; }
     };
     setCorrectMultiAmount(res.reduce(correctCounter, 0));
+
+    console.log(
+      '-----',
+      multiAnswers,
+      JSON.stringify(multiAnswers),
+    );
  
-    // generate new problem
+/*    sessionStorage.setItem(
+      history,
+      JSON.stringify(multiAnswers),
+    );
+    console.log("eweqwe",sessionStorage.getItem(history))
+    */    
+/*    let hist = JSON.parse(sessionStorage.getItem(history));
+    console.log(hist);
+    if (hist === undefined) {
+      console.log("history is clear")
+    }
+    else {
+      console.log("787");
+      console.log("rqrqr111111", hist);
+      setMultiAnswers(hist);
+    }; */
+    console.log(multiAnswers);
+
+
     setMultiAnswer('');
     setNum1(randomNumber(minMulti, maxMulti));
     setNum2(randomNumber(minMulti, maxMulti));
     setCorrect(false);
+
   };
 
   if (isMulti) {
@@ -105,13 +135,12 @@ const Multi = ({
           </div>
         </div>
         <div>
-          Multi numbers range is from {minMulti} to {maxMulti}
           {multiAnswers.map((answr, idx) => (
-          <div key={idx}>
+            <div key={idx}>
             {answr.num1}x{answr.num2}={answr.answer} ({
               answr.correct ? 'correct' : 'incorrect'
             })
-          </div>
+            </div>
           ))}
         </div>
       </Div1>
@@ -120,6 +149,14 @@ const Multi = ({
   else if (isMulti === false)  {
     return <MultiButton onClick={isMultiChange}>Multi</MultiButton>
   };
+  useEffect( () => {
+    setMultiAnswers(res);
+  },
+    res,
+  );
+  useEffect( () => {
+    sessionStorage.setItem(history, JSON.stringify(multiAnswers),)
+  });
 };
 
 export default Multi;

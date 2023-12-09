@@ -10,6 +10,7 @@ const Div1 = styled.div`
   display:  flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 1.2rem;
 `;
 
 const MinusButton = styled.div`

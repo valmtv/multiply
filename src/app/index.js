@@ -15,7 +15,7 @@ const Div = styled.div`
 
 const Main = styled.main`
   background-color: #e6eaed;
-  font-size: 17px;
+  font-size: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
