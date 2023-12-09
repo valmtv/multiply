@@ -10,9 +10,23 @@ const Div1 = styled.div`
   display:  flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 1.2rem;
 `;
 
-const Subtract = ({}) => {
+const MinusButton = styled.div`
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: green;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  font-size: 30px;
+`;
+
+const Subtract = ({ isMinus, setIsMinus, OnAccordionClick }) => {
   const [minusAnswers, setMinusAnswers] = useState([]);
   const [correctMinusAmount, setCorrectMinusAmount] = useState(0);
   const [minMinus] = useState(10);
@@ -23,6 +37,10 @@ const Subtract = ({}) => {
   const [correct, setCorrect] = useState(false);
 
   const handleMinusInput = e => setMinusAnswer(e.currentTarget.value);
+  const isMinusChange = () => { 
+    OnAccordionClick();
+    setIsMinus(!isMinus);
+  }
 
   const checkMinusAnswer = () => {
     const isCorrect = parseInt(minusAnswer) === num5 - num6;
@@ -66,33 +84,41 @@ const Subtract = ({}) => {
     setNum5(randomNumber(minMinus, maxMinus));
   }
 
-  return <Div1> 
-    <div>
-      Minus : 
-      <br/>
-      Correct__ {correctMinusAmount} / {minusAnswers.length} 
-      <br/>
-      Example : {num5} - {num6}
-      <div>
-        <Input
-          onChange={handleMinusInput} 
-          type="number"
-          value={minusAnswer}
-        />
-        <button onClick={checkMinusAnswer}>Check</button>
-      </div> 
-    </div>
-    <div>
-      Plus numbers range is from {minMinus} to {maxMinus}
-      {minusAnswers.map((answr, idx) => (
-        <div key={idx}>
-          {answr.num1}-{answr.num2}={answr.answer} ({
-            answr.correct ? 'correct' : 'incorrect'
-          })
+  if (isMinus) {
+    return <>
+      <MinusButton onClick={isMinusChange}>Minus</MinusButton> 
+      <Div1> 
+        <div>
+          Minus : 
+          <br/>
+          Correct__ {correctMinusAmount} / {minusAnswers.length} 
+          <br/>
+          Example : {num5} - {num6}
+          <div>
+            <Input
+              onChange={handleMinusInput} 
+              type="number"
+              value={minusAnswer}
+            />
+            <button onClick={checkMinusAnswer}>Check</button>
+          </div> 
         </div>
-      ))}
-    </div>
-  </Div1>
+        <div>
+          Plus numbers range is from {minMinus} to {maxMinus}
+          {minusAnswers.map((answr, idx) => (
+            <div key={idx}>
+              {answr.num1}-{answr.num2}={answr.answer} ({
+                answr.correct ? 'correct' : 'incorrect'
+              })
+            </div>
+          ))}
+        </div>
+      </Div1>
+    </>
+  }
+  else if (isMinus === false) {  
+    return <MinusButton onClick={isMinusChange}>Minus</MinusButton> 
+  };
 };
 
 export default Subtract;

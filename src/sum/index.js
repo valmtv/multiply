@@ -10,9 +10,23 @@ const Div1 = styled.div`
   display:  flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 1.2rem;
 `;
 
-const Sum = ({}) => { 
+const PlusButton = styled.div`
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: green;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  font-size: 30px;
+`;
+
+const Sum = ({ isPlus, setIsPlus, OnAccordionClick }) => { 
   const [plusAnswers, setPlusAnswers] = useState([]);
   const [correctPlusAmount, setCorrectPlusAmount] = useState(0);
   const [minSum, setMinSum] = useState(10);
@@ -23,6 +37,10 @@ const Sum = ({}) => {
   const [correct, setCorrect] = useState(false);
 
   const handlePlusInput = e => setPlusAnswer(e.currentTarget.value); 
+  const isPlusChange = () => {
+    OnAccordionClick();
+    setIsPlus(!isPlus);
+  };
 
   const checkPlusAnswer = () => {
     const isCorrect = parseInt(plusAnswer) === num3 + num4;
@@ -55,33 +73,41 @@ const Sum = ({}) => {
     setCorrect(false);
   };
 
-  return <Div1>
-    <div>
-      Plus : 
-      <br/>
-      Correct__ {correctPlusAmount} / {plusAnswers.length}
-      <br/> 
-      Example : {num3} + {num4}
-      <div>
-        <Input 
-          onChange={handlePlusInput}
-          type="number"
-          value={plusAnswer}
-        />
-        <button onClick={checkPlusAnswer}>Check</button>
-      </div>
-    </div>
-    <div>
-      Plus numbers range is from {minSum} to {maxSum}
-      {plusAnswers.map((answr, idx) => (
-        <div key={idx}>
-          {answr.num1}+{answr.num2}={answr.answer} ({
-            answr.correct ? 'correct' : 'incorrect'
-            })
+  if (isPlus) {
+    return <>
+      <PlusButton onClick={isPlusChange}>Plus</PlusButton>
+      <Div1>
+        <div>
+          Plus : 
+          <br/>
+          Correct__ {correctPlusAmount} / {plusAnswers.length}
+          <br/> 
+          Example : {num3} + {num4}
+          <div>
+            <Input 
+              onChange={handlePlusInput}
+              type="number"
+              value={plusAnswer}
+            />
+            <button onClick={checkPlusAnswer}>Check</button>
+          </div>
         </div>
-      ))}
-    </div>
-  </Div1>
+        <div>
+          Plus numbers range is from {minSum} to {maxSum}
+          {plusAnswers.map((answr, idx) => (
+            <div key={idx}>
+              {answr.num1}+{answr.num2}={answr.answer} ({
+                answr.correct ? 'correct' : 'incorrect'
+                })
+            </div>
+          ))}
+        </div>
+      </Div1>
+    </>
+  }
+  else {
+    return <PlusButton onClick={isPlusChange}>Plus</PlusButton>
+  };
 };
 
 export default Sum;
