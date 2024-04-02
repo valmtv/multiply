@@ -10,7 +10,7 @@ const Div1 = styled.div`
   display:  flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 1.2rem;
+  font-size: 2.6rem;
 `;
 
 const MinusButton = styled.div`
@@ -86,7 +86,6 @@ const Subtract = ({ isMinus, setIsMinus, OnAccordionClick }) => {
 
   if (isMinus) {
     return <>
-      <MinusButton onClick={isMinusChange}>Minus</MinusButton> 
       <Div1> 
         <div>
           Minus : 
@@ -104,7 +103,7 @@ const Subtract = ({ isMinus, setIsMinus, OnAccordionClick }) => {
           </div> 
         </div>
         <div>
-          Plus numbers range is from {minMinus} to {maxMinus}
+          Subtraction History
           {minusAnswers.map((answr, idx) => (
             <div key={idx}>
               {answr.num1}-{answr.num2}={answr.answer} ({

@@ -10,7 +10,7 @@ const Div1 = styled.div`
   display:  flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 1.2rem;
+  font-size: 2.6rem;
 `;
 
 const PlusButton = styled.div`
@@ -75,7 +75,6 @@ const Sum = ({ isPlus, setIsPlus, OnAccordionClick }) => {
 
   if (isPlus) {
     return <>
-      <PlusButton onClick={isPlusChange}>Plus</PlusButton>
       <Div1>
         <div>
           Plus : 
@@ -93,7 +92,7 @@ const Sum = ({ isPlus, setIsPlus, OnAccordionClick }) => {
           </div>
         </div>
         <div>
-          Plus numbers range is from {minSum} to {maxSum}
+          Sum History
           {plusAnswers.map((answr, idx) => (
             <div key={idx}>
               {answr.num1}+{answr.num2}={answr.answer} ({

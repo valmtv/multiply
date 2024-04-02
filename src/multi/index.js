@@ -11,7 +11,7 @@ const Div1 = styled.div`
   display: flex;
   flex-direction : row;
   justify-content : space-between;
-  font-size: 1.2rem;
+  font-size: 2.6rem;
 `;
 
 const MultiButton = styled.div`
@@ -117,7 +117,6 @@ const Multi = ({
 
   if (isMulti) {
     return <>
-      <MultiButton onClick={isMultiChange}>Multi</MultiButton>
       <Div1>
         <div>
           Multi :
@@ -135,6 +134,7 @@ const Multi = ({
           </div>
         </div>
         <div>
+          Multiplication History
           {multiAnswers.map((answr, idx) => (
             <div key={idx}>
             {answr.num1}x{answr.num2}={answr.answer} ({

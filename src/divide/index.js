@@ -10,7 +10,7 @@ const Div1 = styled.div`
   display:  flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 1.2rem;
+  font-size: 2.6rem;
 `;
 
 const DivideButton = styled.div`
@@ -76,7 +76,6 @@ const Divide = ({ isDivide, setIsDivide, OnAccordionClick }) => {
 
   if (isDivide) { 
     return <>
-      <DivideButton onClick={isDivideChange}>Divide</DivideButton> 
       <Div1> 
         <div>
           Divide :
@@ -94,7 +93,7 @@ const Divide = ({ isDivide, setIsDivide, OnAccordionClick }) => {
           </div>
         </div>
         <div>
-          Divide numbers range is from {minDivide} to {maxDivide}
+          Division History
           {divideAnswers.map((answr, idx) => (
             <div key={idx}>
               {answr.dividend}:{answr.divider}={answr.answer} ({
